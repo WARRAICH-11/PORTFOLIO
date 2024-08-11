@@ -17,14 +17,14 @@
     background-size: cover;
 }
 .cd-section:nth-child(2) {
-  background-image: url("../img/cd4.gif");
+  background-image: url("../img/cd4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .cd-section:nth-child(3) {
-  background-image: url("../img/cd2.gif");
+  background-image: url("../img/cd5.jpg");
   background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
