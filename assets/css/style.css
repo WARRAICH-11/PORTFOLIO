@@ -349,39 +349,56 @@ main{
     color: var(--header-text-color);
     text-align: left;
 }
-.about{
+.about {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
 }
-.about-img img{
+
+.about-img img {
     width: 25vw;
-	height:40vw;
+    height: 40vw;
 }
-.heading{
+
+.heading {
     text-align: center;
     font-size: 4.5rem;
-	color:white;
-
+    color: white;
 }
-.about-content h2{
+
+.about-content h2 {
     text-align: left;
     line-height: 1.2;
 }
-.about-content h3{
+
+.about-content h3 {
     font-size: 2.6rem;
 }
-.about-content p{
+
+.about-content p {
     font-size: 1.6rem;
     margin: 2rem 0 3rem;
-
 }
-.About-me-read-more-section h3{
+
+.About-me-read-more-section h3 {
     font-size: 1.7rem;
-
 }
 
+/* New CSS for the content box */
+.about-content {
+    position: relative;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% opacity black background */
+    border-radius: 1rem; /* Optional: Rounded corners */
+}
+
+.about-content h2,
+.about-content h3,
+.about-content p {
+    color: white; /* Bold white text */
+    font-weight: bold;
+}
 .expertise-list {
     list-style: none;
     padding: 0;
