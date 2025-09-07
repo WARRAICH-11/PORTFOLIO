@@ -6,8 +6,6 @@
     <title>Hassan Warraich - AI Engineer | Full-Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-     <!-- VAPI Widget Script -->
-    <script src="https://unpkg.com/@vapi-ai/web@latest/dist/widget.js" defer></script>
     <style>
         :root {
             --primary-bg: #0a0a0a;
@@ -942,36 +940,6 @@
             background-clip: text;
             margin-bottom: 1rem;
         }
-/* VAPI Widget Container */
-.vapi-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10000;
-    width: 360px;
-    max-width: 90vw;
-    height: 600px;
-    max-height: 80vh;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.vapi-container.minimized {
-    height: 60px;
-    width: 200px;
-}
-
-/* VAPI Demo Banner */
-.vapi-demo-banner {
-    background: var(--gradient-blue);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 600;
-}
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
@@ -997,15 +965,7 @@
                 gap: 1rem;
             }
         }
-@media (max-width: 768px) {
-    .vapi-container {
-        width: 90vw;
-        height: 70vh;
-        bottom: 10px;
-        right: 5vw;
-        left: 5vw;
-    }
-}
+
         @media (max-width: 480px) {
             .timeline-line {
                 left: 20px;
@@ -1031,16 +991,6 @@
         }
     </style>
     <script>
-          // VAPI Widget initialization
-            window.addEventListener('load', function() {
-                // Check if VAPI widget is loaded
-                if (typeof window.VapiWidget !== 'undefined') {
-                    console.log('VAPI widget loaded successfully');
-                } else {
-                    console.error('VAPI widget failed to load');
-                }
-            });
-    
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -1068,7 +1018,7 @@
                     overlay.classList.remove('active');
                     document.body.style.overflow = '';
                 });
-          
+            });
             
             // Close menu when clicking overlay
             overlay.addEventListener('click', () => {
@@ -1093,9 +1043,7 @@
     </script>
 </head>
 <body>
-    
     <header>
-      
         <div class="logo">HASSAN WARRAICH</div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
             <span></span>
@@ -1130,7 +1078,7 @@
         <div class="hero-image">
             <img src="IMG_7911.png" alt="Hassan Warraich - AI Engineer & Full-Stack Developer">
         </div>
-        
+        </div>
     </section>
 
     <section class="section" id="about">
@@ -1440,33 +1388,6 @@ This site is for a Vacation Rental Website Mockup. An AIRBNB REPLICA FOR E-COMME
             <div class="footer-title">Built with Innovation & Precision</div>
         </div>
     </footer>
- <!-- VAPI Widget Container -->
-    <div class="vapi-container">
-        <div class="vapi-demo-banner">🎤 Ultima Voice Assistant Demo</div>
-        <vapi-widget 
-            public-key="94e75d29-9b33-456c-9d8b-10158939196e"
-            assistant-id="8438de9d-d65d-41ce-9454-8d0297bc9e6d"
-            mode="voice"
-            theme="dark"
-            base-bg-color="#0a0a0a"
-            accent-color="#3b82f6"
-            cta-button-color="#3b82f6"
-            cta-button-text-color="#ffffff"
-            border-radius="medium"
-            size="full"
-            position="embedded"
-            title="TALK WITH AI"
-            start-button-text="Start"
-            end-button-text="End Call"
-            chat-first-message="Hey, How can I help you today?"
-            chat-placeholder="Type your message..."
-            voice-show-transcript="true"
-            consent-required="true"
-            consent-title="Terms and conditions"
-            consent-content="By clicking Agree, and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service."
-            consent-storage-key="vapi_widget_consent"
-        ></vapi-widget>
-    </div>
 
     <script>
         // Smooth scrolling for navigation links
