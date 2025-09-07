@@ -942,6 +942,36 @@
             background-clip: text;
             margin-bottom: 1rem;
         }
+/* VAPI Widget Container */
+.vapi-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    width: 360px;
+    max-width: 90vw;
+    height: 600px;
+    max-height: 80vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.vapi-container.minimized {
+    height: 60px;
+    width: 200px;
+}
+
+/* VAPI Demo Banner */
+.vapi-demo-banner {
+    background: var(--gradient-blue);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
@@ -967,7 +997,15 @@
                 gap: 1rem;
             }
         }
-
+@media (max-width: 768px) {
+    .vapi-container {
+        width: 90vw;
+        height: 70vh;
+        bottom: 10px;
+        right: 5vw;
+        left: 5vw;
+    }
+}
         @media (max-width: 480px) {
             .timeline-line {
                 left: 20px;
@@ -1030,7 +1068,7 @@
                     overlay.classList.remove('active');
                     document.body.style.overflow = '';
                 });
-            });
+          
             
             // Close menu when clicking overlay
             overlay.addEventListener('click', () => {
@@ -1092,7 +1130,7 @@
         <div class="hero-image">
             <img src="IMG_7911.png" alt="Hassan Warraich - AI Engineer & Full-Stack Developer">
         </div>
-        </div>
+        
     </section>
 
     <section class="section" id="about">
