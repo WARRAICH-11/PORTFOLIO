@@ -133,7 +133,7 @@ export function Hero() {
                  {/* Image with enhanced hover effects */}
 <div className="relative z-10">
   <ImageWithFallback
-    src="https://warraich-11.github.io/PORTFOLIO/IMG_7911.png"
+    src="https://warraich-11.github.io/IKHWAN.CO/PROFILE.png"
     alt="Hassan Warraich - AI Engineer & Full Stack Developer"
     className="w-4/5 h-auto mx-auto rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
   />

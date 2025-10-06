@@ -9,6 +9,7 @@ import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedSer
 import { Projects } from './components/cyber-portfolio/Projects';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
+import VapiChatbot from './components/cyber-portfolio/VapiChatbot';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <FeaturedServicesSlider />
         <Projects />
         <Contact />
+        <VapiChatbot />
       </main>
       
       {/* Footer */}
@@ -41,6 +43,7 @@ export default function App() {
           },
         }}
       />
+      
     </div>
   );
 }

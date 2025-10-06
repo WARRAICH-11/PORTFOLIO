@@ -134,17 +134,7 @@ export function Footer() {
 
         {/* Bottom Footer */}
         <div className="py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-1 sm:gap-2 text-gray-400 font-inter text-xs sm:text-sm text-center"
-          >
-            <span>© {currentYear} Hassan Warraich • Designed </span>
-            <Heart className="h-3 w-3 sm:h-4 sm:w-4 text-red-500 fill-current" />
-            <span>& coded with passion.</span>
-          </motion.div>
+         
 
           <motion.div
             initial={{ opacity: 0 }}
