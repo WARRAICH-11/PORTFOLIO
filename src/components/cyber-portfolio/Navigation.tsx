@@ -44,7 +44,6 @@ export function Navigation() {
     { id: 'skills', label: 'Skills' },
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
-    { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' }
   ];
 

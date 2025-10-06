@@ -6,9 +6,7 @@ import { Hero } from './components/cyber-portfolio/Hero';
 import { About } from './components/cyber-portfolio/About';
 import { Skills } from './components/cyber-portfolio/Skills';
 import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedServicesSlider';
-
 import { Projects } from './components/cyber-portfolio/Projects';
-import { Testimonials } from './components/cyber-portfolio/Testimonials';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
 
@@ -25,7 +23,6 @@ export default function App() {
         <Skills />
         <FeaturedServicesSlider />
         <Projects />
-        <Testimonials />
         <Contact />
       </main>
       

@@ -10,6 +10,16 @@ import { ImageWithFallback } from '../figma/ImageWithFallback';
 export function Projects() {
   const projects = [
     {
+  id: 11,
+  title: "crypto-price-tracker-app",
+  description: "A real-time cryptocurrency price tracking dashboard with comprehensive technical analysis",
+  image:"//images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with NeuroCalm preview image if available
+  technologies: ["VITE", "CRYPTO ","Artificial Intelligence", "Fullstack", "Responsive", "UI/UX", "Firebase"],
+  liveUrl: "https://crypto-price-tracker-app-bice.vercel.app/",
+  githubUrl: "https://github.com/WARRAICH-11/Crypto-Price-Tracker-App",
+  featured: true
+},
+    {
   id: 1,
   title: "NeuroCalm",
   description: "Leverage the power of AI and neuroscience to reduce stress, enhance focus, and build life-changing habits. Your journey to a calmer, more productive mind starts now.",

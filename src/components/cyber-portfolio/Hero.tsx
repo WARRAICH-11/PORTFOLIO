@@ -64,7 +64,7 @@ export function Hero() {
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
                 <Sparkles className="w-5 h-5 text-primary animate-pulse" />
                 <p className="text-lg font-medium text-primary/80 tracking-wide">
-                  Welcome, I'm Hassan Warraich
+                  Hi, I'm Hassan Warraich
                 </p>
                 <Sparkles className="w-5 h-5 text-primary animate-pulse" />
               </div>
@@ -93,13 +93,14 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-8"
             >
               <Button
-                size="lg"
-                className="bg-gradient-to-r from-primary to-cyan-500 hover:from-primary/90 hover:to-cyan-500/90 text-black text-lg px-8 py-4 rounded-2xl transition-all duration-500 transform hover:scale-110 hero-glow-pulse font-semibold shadow-2xl"
-              >
-                <Zap className="mr-3 h-6 w-6" />
-                Hire Me Now
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
+  size="lg"
+  className="bg-gradient-to-r from-primary to-cyan-500 hover:from-primary/90 hover:to-cyan-500/90 text-black text-lg px-8 py-4 rounded-2xl transition-all duration-500 transform hover:scale-110 hero-glow-pulse font-semibold shadow-2xl"
+  onClick={() => window.open('https://www.linkedin.com/in/hassanwarraich11/', '_blank')}
+>
+  <Zap className="mr-3 h-6 w-6" />
+  Hire Me Now
+  <ArrowRight className="ml-3 h-6 w-6" />
+</Button>
 
               <Button
                 variant="outline"
@@ -129,45 +130,44 @@ export function Hero() {
                 {/* Inner glow effect */}
                 <div className="relative rounded-3xl overflow-hidden hero-image-hover group">
                   
-                  {/* Image with enhanced hover effects */}
-                  <div className="relative z-10">
-                    <ImageWithFallback
-                      src="https://warraich-11.github.io/PORTFOLIO/IMG_7911.png"
-                      alt="Hassan Warraich - AI Engineer & Full Stack Developer"
-                      className="w-full h-auto rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                    />
-                    
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                  </div>
-                  
-                  {/* Inner decorative elements */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 via-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
-                </div>
-              </div>
+                 {/* Image with enhanced hover effects */}
+<div className="relative z-10">
+  <ImageWithFallback
+    src="https://warraich-11.github.io/PORTFOLIO/IMG_7911.png"
+    alt="Hassan Warraich - AI Engineer & Full Stack Developer"
+    className="w-4/5 h-auto mx-auto rounded-2xl transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+  />
+  
+  {/* Overlay on hover */}
+  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+</div>
 
-              {/* Enhanced floating elements around the image */}
-              <div className="absolute -top-8 -right-8 w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-cyan-500/30 rounded-full blur-2xl luxury-float"></div>
-              <div
-                className="absolute -bottom-8 -left-8 w-24 h-24 md:w-32 md:h-32 bg-gradient-to-tr from-blue-500/30 to-primary/30 rounded-full blur-2xl luxury-float"
-                style={{ animationDelay: "2s" }}
-              ></div>
-              <div
-                className="absolute top-1/4 -right-12 w-16 h-16 md:w-24 md:h-24 bg-gradient-to-l from-cyan-400/20 to-blue-600/20 rounded-full blur-xl luxury-float"
-                style={{ animationDelay: "4s" }}
-              ></div>
-              <div
-                className="absolute bottom-1/4 -left-12 w-12 h-12 md:w-20 md:h-20 bg-gradient-to-r from-primary/20 to-cyan-300/20 rounded-full blur-lg luxury-float"
-                style={{ animationDelay: "6s" }}
-              ></div>
-              
-              {/* Additional sparkle effects */}
-              <div className="absolute top-8 left-8 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-12 right-12 w-3 h-3 bg-primary rounded-full animate-pulse" style={{ animationDelay: "1s" }}></div>
-              <div className="absolute top-1/2 left-4 w-1 h-1 bg-blue-300 rounded-full animate-pulse" style={{ animationDelay: "2s" }}></div>
-            </div>
-          </motion.div>
+{/* Inner decorative elements - thinner border */}
+<div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 via-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+</div>
+</div>
 
+{/* Enhanced floating elements around the image */}
+<div className="absolute -top-8 -right-8 w-20 h-20 md:w-28 md:h-28 bg-gradient-to-br from-primary/30 to-cyan-500/30 rounded-full blur-2xl luxury-float"></div>
+<div
+  className="absolute -bottom-8 -left-8 w-24 h-24 md:w-32 md:h-32 bg-gradient-to-tr from-blue-500/30 to-primary/30 rounded-full blur-2xl luxury-float"
+  style={{ animationDelay: "2s" }}
+></div>
+<div
+  className="absolute top-1/4 -right-12 w-16 h-16 md:w-24 md:h-24 bg-gradient-to-l from-cyan-400/20 to-blue-600/20 rounded-full blur-xl luxury-float"
+  style={{ animationDelay: "4s" }}
+></div>
+<div
+  className="absolute bottom-1/4 -left-12 w-12 h-12 md:w-20 md:h-20 bg-gradient-to-r from-primary/20 to-cyan-300/20 rounded-full blur-lg luxury-float"
+  style={{ animationDelay: "6s" }}
+></div>
+
+{/* Additional sparkle effects */}
+<div className="absolute top-8 left-8 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+<div className="absolute bottom-12 right-12 w-3 h-3 bg-primary rounded-full animate-pulse" style={{ animationDelay: "1s" }}></div>
+<div className="absolute top-1/2 left-4 w-1 h-1 bg-blue-300 rounded-full animate-pulse" style={{ animationDelay: "2s" }}></div>
+</div>
+</motion.div>
         </div>
       </div>
     </section>

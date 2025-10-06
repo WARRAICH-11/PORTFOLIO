@@ -119,10 +119,7 @@ export function Footer() {
                   <span className="text-blue-400">Email:</span><br />
                   <span className="break-all">code.HASSAN@outlook.com</span>
                 </p>
-                <p className="text-gray-400 font-inter">
-                  <span className="text-blue-400">Phone:</span><br />
-                  +92 349 4956268
-                </p>
+                
                 <p className="text-gray-400 font-inter">
                   <span className="text-blue-400">Location:</span><br />
                   Gujrat, Pakistan

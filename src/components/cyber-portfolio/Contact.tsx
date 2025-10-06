@@ -45,12 +45,7 @@ export function Contact() {
       value: "code.HASSAN@outlook.com",
       href: "mailto:code.HASSAN@outlook.com"
     },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+92 349 4956268",
-      href: "tel:+92 349 4956268"
-    },
+    
     {
       icon: MapPin,
       title: "Location",
