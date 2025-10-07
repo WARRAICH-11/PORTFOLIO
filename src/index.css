@@ -5188,3 +5188,30 @@ html {
     opacity: .5;
   }
 }
+
+/* Professional Minimal Overrides: disable cyber animations and glows */
+.cyber-float,
+.luxury-float,
+.cyber-pulse-glow,
+.hero-glow-pulse,
+.text-glow-animation,
+.floating-orb,
+.ultra-luxury-glow,
+.premium-card-hover,
+.cyber-fade-in,
+.cyber-shimmer,
+.image-hover-glow,
+.blue-text-reveal,
+.electric-glow,
+.nav-particle,
+.luxury-nav-glow,
+.hero-gradient-text,
+.animate-pulse {
+  animation: none !important;
+}
+
+.electric-glow,
+.text-glow-animation {
+  text-shadow: none !important;
+  filter: none !important;
+}

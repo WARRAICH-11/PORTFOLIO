@@ -148,7 +148,7 @@ export function FeaturedServicesSlider() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-calibri text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-6 electric-glow">
+          <h2 className="font-calibri text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-6">
             Featured Services
           </h2>
           <p className="text-gray-300 font-inter description-text max-w-3xl mx-auto">
@@ -186,7 +186,7 @@ export function FeaturedServicesSlider() {
                 }}
                 className="absolute inset-0"
               >
-                <Card className={`h-full bg-gradient-to-br ${slides[currentSlide].gradient} border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300`}>
+                <Card className={`h-full bg-gray-900/30 border border-blue-500/20`}>
                   <CardContent className="h-full flex flex-col justify-center p-4 sm:p-6 md:p-8 lg:p-12">
                     <div className="text-center space-y-4 sm:space-y-6">
                       <motion.h3 
@@ -241,7 +241,7 @@ export function FeaturedServicesSlider() {
                       >
                         <Button 
                           size="lg"
-                          className="bg-blue-500 hover:bg-blue-600 text-white font-inter font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 hover:scale-105 cyber-pulse-glow text-sm sm:text-base"
+                          className="bg-blue-500 hover:bg-blue-600 text-white font-inter font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 text-sm sm:text-base"
                         >
                           {slides[currentSlide].ctaText}
                         </Button>
@@ -283,10 +283,10 @@ export function FeaturedServicesSlider() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full ${
                 index === currentSlide 
-                  ? 'bg-blue-500 w-8 cyber-pulse-glow' 
-                  : 'bg-gray-600 hover:bg-blue-400/50'
+                  ? 'bg-blue-500 w-8' 
+                  : 'bg-gray-600'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

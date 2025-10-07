@@ -131,7 +131,7 @@ export function Projects() {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="font-calibri text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-400 mb-4 sm:mb-6 electric-glow">
+          <h2 className="font-calibri text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-400 mb-4 sm:mb-6">
             Featured Projects
           </h2>
           <p className="text-gray-300 font-inter text-base sm:text-lg description-text max-w-3xl mx-auto px-2 sm:px-0">
@@ -151,10 +151,10 @@ export function Projects() {
               viewport={{ once: true }}
               className="h-full"
             >
-              <Card className={`group overflow-hidden transition-all duration-300 hover:scale-105 h-full flex flex-col card-hover-glass ${
+              <Card className={`group overflow-hidden h-full flex flex-col ${
                 project.featured 
-                  ? 'bg-gradient-to-br from-blue-900/50 to-cyan-900/30 border-blue-400 cyber-pulse-glow' 
-                  : 'bg-gray-900/50 border border-blue-500/20 hover:border-blue-500/40'
+                  ? 'bg-gray-900/50 border border-blue-500/30' 
+                  : 'bg-gray-900/50 border border-blue-500/20'
               }`}>
                 {project.featured && (
                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10">

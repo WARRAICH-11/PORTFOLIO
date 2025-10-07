@@ -47,7 +47,7 @@ export function Footer() {
               viewport={{ once: true }}
               className="sm:col-span-2 lg:col-span-2"
             >
-              <div className="font-playfair text-xl sm:text-2xl font-bold text-blue-400 electric-glow mb-3 sm:mb-4">
+              <div className="font-playfair text-xl sm:text-2xl font-bold text-blue-400 mb-3 sm:mb-4">
                 HASSAN WARRAICH
               </div>
               <p className="text-gray-300 font-inter text-sm sm:text-base mb-4 sm:mb-6 max-w-md">
@@ -163,7 +163,7 @@ export function Footer() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-2.5 sm:p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg cyber-pulse-glow transition-all duration-300 z-50"
+          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 p-2.5 sm:p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-colors duration-200 z-50"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >

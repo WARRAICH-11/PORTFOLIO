@@ -58,7 +58,7 @@ export function Skills() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-calibri text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-6 electric-glow">
+          <h2 className="font-calibri text-5xl md:text-6xl lg:text-7xl font-bold text-blue-400 mb-6">
             Skills & Technologies
           </h2>
           <p className="text-gray-300 font-inter description-text max-w-3xl mx-auto">
@@ -78,7 +78,7 @@ export function Skills() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <Card className="h-full bg-gray-900/50 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 cyber-pulse-glow card-hover-glass">
+              <Card className="h-full bg-gray-900/50 border border-blue-500/20 hover:border-blue-500/40 transition-colors duration-200">
                 <CardHeader className="text-center pb-4">
                   <div className="flex justify-center mb-4">
                     <div className="p-3 bg-blue-500/20 rounded-full">
