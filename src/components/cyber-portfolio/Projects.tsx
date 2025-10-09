@@ -6,9 +6,20 @@ import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-
+import React from 'react';
 export function Projects() {
   const projects = [
+    {
+      id: 12,
+      title: "FitnessForge",
+      description: "EXERCISE LIBRARY Master the fundamentals. Browse our comprehensive database of proven exercises.",
+      image:"https://media.istockphoto.com/id/1391410221/photo/sports-and-gym-activities.jpg?s=2048x2048&w=is&k=20&c=icVZcLOjuulphoJT-Lfa6MmLUftfYE75Oe41E3Jxpeo=", // Replace with NeuroCalm preview image if available
+      technologies: ["VITE", "GYM", "FITNESS", "Responsive", "UI/UX", "FRONTEND"],
+      liveUrl: "https://warraich-11.github.io/FitnessForge/",
+      githubUrl: "https://github.com/WARRAICH-11/FitnessForge",
+      featured: true
+    },
+    
     {
   id: 11,
   title: "crypto-price-tracker-app",
@@ -49,6 +60,16 @@ export function Projects() {
     githubUrl: "https://github.com/WARRAICH-11/BRANDEDRACK",
     featured: true
   },
+  {
+    id: 13,
+    title: "goldtrack",
+    description: "Real-Time Market Analysis & Price Predictions Enterprise-grade precious metals investment platform with AI-powered insights, portfolio tracking, and professional market analysis",
+    image:"//images.unsplash.com/photo-1640161704729-cbe966a08476?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Replace with NeuroCalm preview image if available
+    technologies: ["LOVABLE", "GEMINI AI","VITE", "GOLD ","INVESTMENT COACH","Artificial Intelligence", "Fullstack", "Responsive", "UI/UX", "Firebase"],
+    liveUrl: "https://goldtrack.lovable.app/",
+    githubUrl: "https://github.com/WARRAICH-11/goldtrack"
+  },
+  
   {
     id: 7,
     title: "City of Woods",
