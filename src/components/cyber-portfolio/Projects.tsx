@@ -10,6 +10,15 @@ import React from 'react';
 export function Projects() {
   const projects = [
     {
+      id: 14,
+      title: "Netflix Clone",
+      description: "Simple netflix clone for only developers to learn and practice their skills",
+      image:"https://images.lifestyleasia.com/wp-content/uploads/sites/2/2022/10/28150003/thibault-penin-grzokn1aqsg-unsplash-scaled-1-1348x900.jpeg?tr=w-1600",
+      technologies: ["FrontEnd Project", "Netflix","VITE", "Responsive", "UI/UX"],
+      liveUrl: "https://warraich-11.github.io/NetflixClone/",
+      githubUrl: "https://github.com/WARRAICH-11/NetflixClone"
+    },
+    {
       id: 12,
       title: "FitnessForge",
       description: "EXERCISE LIBRARY Master the fundamentals. Browse our comprehensive database of proven exercises.",
