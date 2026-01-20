@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Heart, Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
+import { Heart, Github, Linkedin, Instagram, Mail, ArrowUp } from 'lucide-react';
 import { Button } from '../ui/button';
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/WARRAICH-11', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/hassanwarraich11', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://www.instagram.com/resillientbeing/', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/resillientbeing/', label: 'Instagram' },
     { icon: Mail, href: 'mailto:code.HASSAN@outlook.com', label: 'Email' }
   ];
 
