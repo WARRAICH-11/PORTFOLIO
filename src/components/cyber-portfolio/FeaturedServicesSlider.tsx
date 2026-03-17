@@ -152,7 +152,7 @@ export function FeaturedServicesSlider() {
             Featured Services
           </h2>
           <p className="text-gray-300 font-inter description-text max-w-3xl mx-auto">
-            Discover our premium service offerings designed to elevate your digital presence 
+            Discover our premium service offerings designed to elevate your digital presence
             and drive exceptional business results.
           </p>
         </motion.div>
@@ -186,10 +186,10 @@ export function FeaturedServicesSlider() {
                 }}
                 className="absolute inset-0"
               >
-                <Card className={`h-full bg-gray-900/30 border border-blue-500/20`}>
+                <Card className={`h-full border border-blue-500/25 relative overflow-hidden`} style={{ background: 'linear-gradient(135deg, rgba(14,165,233,0.12) 0%, rgba(17,17,17,0.97) 40%, rgba(6,182,212,0.08) 100%)' }}>
                   <CardContent className="h-full flex flex-col justify-center p-4 sm:p-6 md:p-8 lg:p-12">
                     <div className="text-center space-y-4 sm:space-y-6">
-                      <motion.h3 
+                      <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
@@ -197,8 +197,8 @@ export function FeaturedServicesSlider() {
                       >
                         {slides[currentSlide].title}
                       </motion.h3>
-                      
-                      <motion.p 
+
+                      <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
@@ -208,7 +208,7 @@ export function FeaturedServicesSlider() {
                       </motion.p>
 
                       {/* Feature Tags */}
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
@@ -221,8 +221,8 @@ export function FeaturedServicesSlider() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.5 + index * 0.1 }}
                           >
-                            <Badge 
-                              variant="outline" 
+                            <Badge
+                              variant="outline"
                               className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10 transition-colors duration-200 badge-text-enhanced py-1.5 sm:py-2 px-2 sm:px-4 text-xs sm:text-sm"
                             >
                               <feature.icon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
@@ -239,9 +239,10 @@ export function FeaturedServicesSlider() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
                       >
-                        <Button 
+                        <Button
                           size="lg"
-                          className="bg-blue-500 hover:bg-blue-600 text-white font-inter font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors duration-200 text-sm sm:text-base"
+                          className="bg-blue-500 hover:bg-blue-600 text-white font-inter font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 text-sm sm:text-base shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                         >
                           {slides[currentSlide].ctaText}
                         </Button>
@@ -264,7 +265,7 @@ export function FeaturedServicesSlider() {
               <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </div>
-          
+
           <div className="hidden sm:flex absolute inset-y-0 right-0 items-center">
             <Button
               variant="ghost"
@@ -283,11 +284,10 @@ export function FeaturedServicesSlider() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full ${
-                index === currentSlide 
-                  ? 'bg-blue-500 w-8' 
-                  : 'bg-gray-600'
-              }`}
+              className={`w-3 h-3 rounded-full ${index === currentSlide
+                ? 'bg-blue-500 w-8'
+                : 'bg-gray-600'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

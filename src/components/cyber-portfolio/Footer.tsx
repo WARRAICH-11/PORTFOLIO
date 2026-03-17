@@ -51,7 +51,7 @@ export function Footer() {
                 HASSAN WARRAICH
               </div>
               <p className="text-gray-300 font-inter text-sm sm:text-base mb-4 sm:mb-6 max-w-md">
-                Full Stack Developer passionate about creating innovative digital experiences 
+                Full Stack Developer passionate about creating innovative digital experiences
                 that blend cutting-edge technology with exceptional design.
               </p>
               <div className="flex gap-3 sm:gap-4">
@@ -119,7 +119,7 @@ export function Footer() {
                   <span className="text-blue-400">Email:</span><br />
                   <span className="break-all">code.HASSAN@outlook.com</span>
                 </p>
-                
+
                 <p className="text-gray-400 font-inter">
                   <span className="text-blue-400">Location:</span><br />
                   Gujrat, Pakistan
@@ -134,7 +134,15 @@ export function Footer() {
 
         {/* Bottom Footer */}
         <div className="py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-         
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-gray-500 font-inter text-xs sm:text-sm"
+          >
+            © {currentYear} <span className="text-blue-400 font-medium">Hassan Warraich</span>. All rights reserved.
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -143,13 +151,13 @@ export function Footer() {
             viewport={{ once: true }}
             className="flex items-center gap-3 sm:gap-4"
           >
-            <div className="text-gray-400 font-inter text-xs sm:text-sm">
-              Built with React & Tailwind CSS
+            <div className="text-gray-500 font-inter text-xs sm:text-sm">
+              Built with ⚡ React & Tailwind CSS
             </div>
             <Button
               onClick={scrollToTop}
               size="sm"
-              className="bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 hover:border-blue-500/50 transition-all duration-200 p-2"
+              className="bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30 hover:border-blue-500/50 transition-all duration-200 p-2 rounded-lg"
             >
               <ArrowUp className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
@@ -172,7 +180,7 @@ export function Footer() {
 
         {/* Background Effects */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-        
+
         {/* Floating Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(10)].map((_, i) => (

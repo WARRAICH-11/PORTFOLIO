@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
+import { Instagram } from 'lucide-react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -29,11 +30,16 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    toast.success('Message sent successfully! I\'ll get back to you soon.');
+
+    // Open mailto with pre-filled content
+    const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.open(`mailto:code.HASSAN@outlook.com?subject=${subject}&body=${body}`, '_self');
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    toast.success("Opening your email client! I'll get back to you within 24 hours.");
     setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
   };
@@ -45,7 +51,7 @@ export function Contact() {
       value: "code.HASSAN@outlook.com",
       href: "mailto:code.HASSAN@outlook.com"
     },
-    
+
     {
       icon: MapPin,
       title: "Location",
@@ -63,15 +69,15 @@ export function Contact() {
     },
     {
       icon: Linkedin,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://www.linkedin.com/in/hassanwarraich11",
       color: "hover:text-blue-400"
     },
     {
-      icon: Twitter,
-      label: "Twitter",
+      icon: Instagram,
+      label: "Instagram",
       href: "https://www.instagram.com/resillientbeing/",
-      color: "hover:text-cyan-400"
+      color: "hover:text-pink-400"
     }
   ];
 
@@ -89,7 +95,7 @@ export function Contact() {
             Let's Work Together
           </h2>
           <p className="text-gray-300 font-inter text-base sm:text-lg description-text max-w-3xl mx-auto px-2 sm:px-0">
-            Ready to bring your ideas to life? I'm here to help you build something amazing. 
+            Ready to bring your ideas to life? I'm here to help you build something amazing.
             Let's discuss your project and see how we can collaborate.
           </p>
         </motion.div>
@@ -141,7 +147,7 @@ export function Contact() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="subject" className="text-gray-300 text-sm">
                       Subject
@@ -156,7 +162,7 @@ export function Contact() {
                       placeholder="Project inquiry"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-gray-300 text-sm">
                       Message
@@ -172,7 +178,7 @@ export function Contact() {
                       placeholder="Tell me about your project..."
                     />
                   </div>
-                  
+
                   <Button
                     type="submit"
                     disabled={isSubmitting}
@@ -208,7 +214,7 @@ export function Contact() {
               <h3 className="font-playfair text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6">
                 Get in Touch
               </h3>
-              
+
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={info.title}

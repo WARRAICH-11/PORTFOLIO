@@ -12,11 +12,11 @@ export function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'skills', 'services', 'projects', 'testimonials', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'services', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i]);
         if (element && element.offsetTop <= scrollPosition) {
@@ -25,7 +25,7 @@ export function Navigation() {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -52,15 +52,14 @@ export function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'luxury-glass border-b border-blue-400/30 shadow-lg' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'luxury-glass border-b border-blue-400/30 shadow-lg'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       {/* Luxury Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-blue-900/10 to-black/90 opacity-80" />
-      
+
       {/* Animated Border */}
       {scrolled && (
         <motion.div
@@ -74,7 +73,7 @@ export function Navigation() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
           {/* Luxury Logo */}
-          <motion.div 
+          <motion.div
             className="relative group cursor-pointer"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.98 }}
@@ -112,11 +111,10 @@ export function Navigation() {
               >
                 <motion.button
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-6 py-3 font-inter font-medium text-sm tracking-wide transition-all duration-400 group ${
-                    activeSection === item.id 
-                      ? 'text-blue-300' 
+                  className={`relative px-6 py-3 font-inter font-medium text-sm tracking-wide transition-all duration-400 group ${activeSection === item.id
+                      ? 'text-blue-300'
                       : 'text-white/90 hover:text-blue-300'
-                  }`}
+                    }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -126,7 +124,7 @@ export function Navigation() {
                     layoutId={`nav-bg-${item.id}`}
                     transition={{ duration: 0.3 }}
                   />
-                  
+
                   {/* Active Section Indicator */}
                   {activeSection === item.id && (
                     <motion.div
@@ -135,7 +133,7 @@ export function Navigation() {
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
-                  
+
                   {/* Shimmer Effect */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100"
@@ -143,9 +141,9 @@ export function Navigation() {
                     whileHover={{ x: '200%' }}
                     transition={{ duration: 0.6 }}
                   />
-                  
+
                   <span className="relative z-10">{item.label}</span>
-                  
+
                   {/* Luxury Bottom Border */}
                   <motion.div
                     className="absolute bottom-0 left-1/2 h-[2px] bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"
@@ -153,25 +151,25 @@ export function Navigation() {
                     whileHover={{ width: '80%' }}
                     transition={{ duration: 0.3 }}
                   />
-                  
+
                   {/* Floating Particles Effect */}
                   <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {[...Array(3)].map((_, i) => (
                       <motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                        initial={{ 
-                          x: Math.random() * 100 + '%', 
+                        initial={{
+                          x: Math.random() * 100 + '%',
                           y: '100%',
-                          opacity: 0 
+                          opacity: 0
                         }}
                         whileHover={{
                           y: '-20px',
                           opacity: [0, 1, 0],
-                          transition: { 
-                            duration: 1.5, 
+                          transition: {
+                            duration: 1.5,
                             delay: i * 0.2,
-                            repeat: Infinity 
+                            repeat: Infinity
                           }
                         }}
                       />
@@ -215,11 +213,10 @@ export function Navigation() {
                     <motion.button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className={`block w-full text-left px-4 py-3 rounded-xl font-inter font-medium transition-all duration-300 group ${
-                        activeSection === item.id 
-                          ? 'text-blue-300 bg-blue-500/10 border border-blue-400/30' 
+                      className={`block w-full text-left px-4 py-3 rounded-xl font-inter font-medium transition-all duration-300 group ${activeSection === item.id
+                          ? 'text-blue-300 bg-blue-500/10 border border-blue-400/30'
                           : 'text-white/90 hover:text-blue-300 hover:bg-blue-500/5'
-                      }`}
+                        }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -234,7 +231,7 @@ export function Navigation() {
                           whileHover={{ scale: 1 }}
                         />
                       </div>
-                      
+
                       {/* Mobile Shimmer Effect */}
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100"
