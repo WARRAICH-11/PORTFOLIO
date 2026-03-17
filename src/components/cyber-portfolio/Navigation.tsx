@@ -53,13 +53,10 @@ export function Navigation() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? 'luxury-glass border-b border-blue-400/30 shadow-lg'
-          : 'bg-transparent'
+        ? 'bg-black/80 backdrop-blur-xl border-b border-blue-500/20 shadow-lg shadow-blue-500/5'
+        : 'bg-transparent'
         }`}
     >
-      {/* Luxury Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-blue-900/10 to-black/90 opacity-80" />
-
       {/* Animated Border */}
       {scrolled && (
         <motion.div
@@ -112,8 +109,8 @@ export function Navigation() {
                 <motion.button
                   onClick={() => scrollToSection(item.id)}
                   className={`relative px-6 py-3 font-inter font-medium text-sm tracking-wide transition-all duration-400 group ${activeSection === item.id
-                      ? 'text-blue-300'
-                      : 'text-white/90 hover:text-blue-300'
+                    ? 'text-blue-300'
+                    : 'text-white/90 hover:text-blue-300'
                     }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
@@ -214,8 +211,8 @@ export function Navigation() {
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
                       className={`block w-full text-left px-4 py-3 rounded-xl font-inter font-medium transition-all duration-300 group ${activeSection === item.id
-                          ? 'text-blue-300 bg-blue-500/10 border border-blue-400/30'
-                          : 'text-white/90 hover:text-blue-300 hover:bg-blue-500/5'
+                        ? 'text-blue-300 bg-blue-500/10 border border-blue-400/30'
+                        : 'text-white/90 hover:text-blue-300 hover:bg-blue-500/5'
                         }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
