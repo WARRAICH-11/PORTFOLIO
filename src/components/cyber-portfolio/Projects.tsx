@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ExternalLink, Github, Star } from 'lucide-react';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
+import { useMemo, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
-import React from 'react';
+import { FadeIn } from '../motion/FadeIn';
+import { ScrollMotionLayer } from '../motion/ScrollMotionLayer';
 
 const ALL_PROJECTS = [
   {
@@ -212,240 +211,158 @@ const ALL_PROJECTS = [
 const CATEGORIES = ["All", "AI", "SaaS", "E-commerce", "Web"];
 
 export function Projects() {
+  const shouldReduce = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState("All");
   const [showAll, setShowAll] = useState(false);
 
-  const filtered = activeCategory === "All"
-    ? ALL_PROJECTS
-    : ALL_PROJECTS.filter(p => p.category === activeCategory);
+  const filtered = useMemo(() => {
+    return activeCategory === "All"
+      ? ALL_PROJECTS
+      : ALL_PROJECTS.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
 
   const visible = showAll ? filtered : filtered.slice(0, 6);
 
   return (
-    <section id="projects" className="py-16 sm:py-20 md:py-24 bg-black relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(rgba(14,165,233,1) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <Star className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-medium text-blue-300 tracking-wider">PORTFOLIO</span>
-          </motion.div>
-          <h2 className="font-calibri text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              Featured Projects
-            </span>
+    <section id="projects" className="section bg-pampas">
+      <div className="section-inner">
+        <ScrollMotionLayer>
+        <FadeIn>
+          <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
+            05 — PROJECTS
+          </div>
+          <h2 className="mt-4 mb-12 text-3xl font-normal tracking-tight text-[#1A1816] md:text-4xl">
+            Selected work.
           </h2>
-          <p className="text-gray-400 font-inter text-base sm:text-lg max-w-3xl mx-auto">
-            A showcase of my work across AI, SaaS, e-commerce, and modern web development —
-            {" "}<strong className="text-gray-300">{ALL_PROJECTS.length}+ projects</strong> and counting.
-          </p>
-        </motion.div>
+        </FadeIn>
 
-        {/* Category filter */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {CATEGORIES.map((cat) => (
-            <motion.button
-              key={cat}
-              onClick={() => { setActiveCategory(cat); setShowAll(false); }}
-              className={`px-5 py-2 rounded-full text-sm font-medium font-inter transition-all duration-300 border ${activeCategory === cat
-                  ? 'bg-blue-500 border-blue-400 text-white shadow-lg shadow-blue-500/30'
-                  : 'border-blue-500/30 text-gray-400 hover:border-blue-400/60 hover:text-blue-300 bg-transparent'
-                }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {cat}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Projects grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
-            {visible.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: (index % 6) * 0.08 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                className="group h-full"
-              >
-                <div
-                  className="h-full flex flex-col rounded-2xl overflow-hidden relative"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(17,17,17,0.95), rgba(14,165,233,0.04), rgba(17,17,17,0.95))',
-                    border: project.featured ? '1px solid rgba(14,165,233,0.35)' : '1px solid rgba(14,165,233,0.15)',
-                    transition: 'all 0.4s ease',
+        <FadeIn>
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((cat) => {
+              const active = cat === activeCategory;
+              return (
+                <motion.button
+                  key={cat}
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setShowAll(false);
                   }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.border = '1px solid rgba(14,165,233,0.6)';
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 20px 50px rgba(14,165,233,0.12), 0 0 0 1px rgba(14,165,233,0.2)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.border = project.featured ? '1px solid rgba(14,165,233,0.35)' : '1px solid rgba(14,165,233,0.15)';
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
-                  }}
+                  className={[
+                    "rounded-full border px-4 py-2 text-sm font-medium",
+                    active
+                      ? "border-crail bg-white text-crail"
+                      : "border-cloudy/40 bg-transparent text-cloudy hover:text-crail hover:border-crail",
+                  ].join(" ")}
+                  whileHover={shouldReduce ? undefined : { scale: 1.02 }}
+                  whileTap={shouldReduce ? undefined : { scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 >
-                  {/* Top shimmer line */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(14,165,233,0.8), rgba(6,182,212,0.6), transparent)' }}
-                  />
+                  {cat}
+                </motion.button>
+              );
+            })}
+          </div>
+        </FadeIn>
 
-                  {/* Image */}
-                  <div className="relative overflow-hidden flex-shrink-0">
-                    {project.featured && (
-                      <div className="absolute top-3 right-3 z-10">
-                        <div className="flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg">
-                          <Star className="w-3 h-3" />
-                          Featured
-                        </div>
-                      </div>
-                    )}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-black/60 backdrop-blur-sm border border-blue-400/30 text-blue-300">
-                        {project.category}
-                      </span>
-                    </div>
-                    <ImageWithFallback
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-44 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Hover action overlays */}
-                    <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 gap-3">
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-semibold shadow-lg backdrop-blur-sm"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <ExternalLink className="h-3.5 w-3.5" />
-                        Live Demo
-                      </motion.a>
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/70 text-white text-sm font-semibold border border-white/20 backdrop-blur-sm"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.97 }}
-                      >
-                        <Github className="h-3.5 w-3.5" />
-                        Code
-                      </motion.a>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 sm:p-6 flex-grow flex flex-col">
-                    <h3 className="font-playfair text-lg sm:text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300 leading-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-400 font-inter text-sm leading-relaxed mb-4 flex-grow line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Tech badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {project.technologies.slice(0, 3).map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="outline"
-                          className="border-blue-500/30 text-blue-300 text-xs px-2 py-0.5 hover:bg-blue-500/10 transition-colors"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <Badge variant="outline" className="border-gray-600/40 text-gray-500 text-xs px-2 py-0.5">
-                          +{project.technologies.length - 3}
-                        </Badge>
-                      )}
-                    </div>
-
-                    {/* Mobile action buttons */}
-                    <div className="flex gap-2 mt-auto">
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-blue-500/10 border border-blue-500/40 text-blue-400 hover:bg-blue-500/20 hover:border-blue-400/60 text-xs py-2 rounded-xl transition-all duration-200"
-                        onClick={() => window.open(project.liveUrl, '_blank')}
-                      >
-                        <ExternalLink className="h-3 w-3 mr-1" />
-                        Live Demo
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-gray-700 text-gray-400 hover:bg-gray-800 hover:text-white text-xs px-3 rounded-xl transition-all duration-200"
-                        onClick={() => window.open(project.githubUrl, '_blank')}
-                      >
-                        <Github className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Show more/less */}
-        {filtered.length > 6 && (
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <motion.button
-              onClick={() => setShowAll(!showAll)}
-              className="px-8 py-3 rounded-full border border-blue-400/40 text-blue-300 font-inter font-medium hover:bg-blue-500/10 hover:border-blue-400/60 transition-all duration-300"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
+        <FadeIn>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              initial={shouldReduce ? false : { opacity: 0, y: 12 }}
+              animate={shouldReduce ? undefined : { opacity: 1, y: 0 }}
+              exit={shouldReduce ? undefined : { opacity: 0, y: -8 }}
+              transition={
+                shouldReduce
+                  ? { duration: 0 }
+                  : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
+              }
             >
-              {showAll ? 'Show Less' : `View All ${filtered.length} Projects →`}
-            </motion.button>
-          </motion.div>
+              {visible.map((project, index) => (
+                <FadeIn key={project.id} delay={index * 0.08} className="h-full">
+                  <motion.div
+                    className="flex h-full flex-col overflow-hidden rounded-2xl border border-cloudy/40 bg-white"
+                    whileHover={
+                      shouldReduce ? undefined : { y: -4, borderColor: "#C15F3C" }
+                    }
+                    transition={
+                      shouldReduce ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }
+                    }
+                  >
+                    <div className="relative">
+                      <ImageWithFallback
+                        src={project.image}
+                        alt={project.title}
+                        className="h-44 w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="text-sm uppercase tracking-widest text-cloudy">
+                        {project.category}
+                      </div>
+                      <h3 className="mt-2 text-lg font-medium text-[#1A1816]">
+                        {project.title}
+                      </h3>
+                      <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[#6B6760]">
+                        {project.description}
+                      </p>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {project.technologies.slice(0, 5).map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full bg-pampas px-3 py-1 text-sm font-medium text-cloudy"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="mt-6 flex gap-4">
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-cloudy hover:text-crail"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Live
+                        </a>
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-cloudy hover:text-crail"
+                        >
+                          <Github className="h-4 w-4" />
+                          Code
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
+                </FadeIn>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </FadeIn>
+
+        {filtered.length > 6 && (
+          <FadeIn className="mt-12">
+            <div className="flex justify-start">
+              <button
+                type="button"
+                onClick={() => setShowAll((v) => !v)}
+                className="rounded-full border border-cloudy/40 bg-white px-6 py-3 text-sm font-medium text-[#1A1816] hover:border-crail"
+              >
+                {showAll ? "Show less" : "View all"}
+              </button>
+            </div>
+          </FadeIn>
         )}
+        </ScrollMotionLayer>
       </div>
     </section>
   );

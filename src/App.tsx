@@ -9,41 +9,55 @@ import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedSer
 import { Projects } from './components/cyber-portfolio/Projects';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
-import VapiChatbot from './components/cyber-portfolio/VapiChatbot';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ScrollProgress } from './components/motion/ScrollProgress';
+import { ScrollAmbient } from './components/motion/ScrollAmbient';
+import { CustomCursor } from './components/motion/CustomCursor';
+import { ThemeProvider } from 'next-themes';
+
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
+};
 
 export default function App() {
+  const shouldReduce = useReducedMotion();
   return (
-    <div className="min-h-screen bg-black text-white font-inter">
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <FeaturedServicesSlider />
-        <Projects />
-        <Contact />
-        <VapiChatbot />
-      </main>
-      
-      {/* Footer */}
-      <Footer />
-      
-      {/* Toast Notifications */}
-      <Toaster 
-        theme="dark"
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: '#111111',
-            border: '1px solid rgba(14, 165, 233, 0.2)',
-            color: '#ffffff',
-          },
-        }}
-      />
-      
-    </div>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      <div className="min-h-screen bg-pampas text-[#1A1816]">
+        <ScrollProgress />
+        <ScrollAmbient />
+        <CustomCursor />
+
+        <Navigation />
+
+        <AnimatePresence mode="wait">
+          <motion.main
+            key="page"
+            className="relative z-[2]"
+            variants={pageVariants}
+            initial={shouldReduce ? false : 'initial'}
+            animate={shouldReduce ? undefined : 'animate'}
+            exit={shouldReduce ? undefined : 'exit'}
+          >
+            <Hero />
+            <About />
+            <Skills />
+            <FeaturedServicesSlider />
+            <Projects />
+            <Contact />
+          </motion.main>
+        </AnimatePresence>
+
+        <Footer />
+
+        <Toaster position="bottom-right" />
+      </div>
+    </ThemeProvider>
   );
 }
