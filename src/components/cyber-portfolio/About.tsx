@@ -13,7 +13,7 @@ export function About() {
             02 — ABOUT
           </div>
           <h2 className="mt-4 mb-12 text-3xl font-normal tracking-tight text-[#1A1816] md:text-4xl">
-            Senior engineering, shipped.
+            engineered & shipped.
           </h2>
         </FadeIn>
 
