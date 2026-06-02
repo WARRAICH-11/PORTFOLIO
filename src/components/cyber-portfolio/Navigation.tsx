@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -73,7 +73,12 @@ export function Navigation() {
             className="flex items-center gap-2"
           >
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-cloudy/40 bg-white">
-              <Sparkles className="h-4 w-4 text-crail" />
+              <img
+                src="/favicon.png"
+                alt=""
+                aria-hidden="true"
+                className="h-5 w-5 object-contain"
+              />
             </span>
             <span className="text-sm font-medium tracking-wide text-[#1A1816]">
               Hassan Warraich

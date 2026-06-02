@@ -7,6 +7,7 @@ import { About } from './components/cyber-portfolio/About';
 import { Skills } from './components/cyber-portfolio/Skills';
 import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedServicesSlider';
 import { Projects } from './components/cyber-portfolio/Projects';
+import { VideoSection } from './components/cyber-portfolio/VideoSection';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
@@ -50,6 +51,7 @@ export default function App() {
             <Skills />
             <FeaturedServicesSlider />
             <Projects />
+            <VideoSection />
             <Contact />
           </motion.main>
         </AnimatePresence>
