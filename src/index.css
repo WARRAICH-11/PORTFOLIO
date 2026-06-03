@@ -3,6 +3,46 @@
 @config "../tailwind.config.ts";
 @import "tailwindcss";
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  background-color: #0A0A0A;
+}
+
+body.custom-cursor-active {
+  cursor: none;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
 :root {
   --color-primary: #C15F3C;
   --color-primary-light: #D4795A;
@@ -12,16 +52,16 @@
   --color-secondary-light: #C8C5BB;
   --color-secondary-dark: #928E83;
 
-  --color-bg: #F4F3EE;
-  --color-bg-nested: #E8E6DF;
-  --color-surface: #FFFFFF;
+  --color-bg: #0A0A0A;
+  --color-bg-nested: #151311;
+  --color-surface: rgba(255, 255, 255, 0.06);
 
-  --color-text-primary: #1A1816;
-  --color-text-secondary: #6B6760;
+  --color-text-primary: #F4F3EE;
+  --color-text-secondary: #C8C5BB;
   --color-text-muted: #B1ADA1;
 
-  --color-border: #B1ADA1;
-  --color-border-subtle: #E8E6DF;
+  --color-border: rgba(177, 173, 161, 0.34);
+  --color-border-subtle: rgba(244, 243, 238, 0.12);
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -37,7 +77,7 @@
   /* shadcn/ui compatibility tokens (light) */
   --background: var(--color-bg);
   --foreground: var(--color-text-primary);
-  --card: var(--color-surface);
+  --card: #151311;
   --card-foreground: var(--color-text-primary);
   --popover: var(--color-surface);
   --popover-foreground: var(--color-text-primary);
@@ -85,7 +125,7 @@ h1,
 h2,
 h3 {
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 section {
@@ -115,11 +155,55 @@ section {
 }
 
 @layer utilities {
+  .spatial-section {
+    background: color-mix(in oklab, #0A0A0A 82%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
+  .spatial-card {
+    border: 1px solid rgba(244, 243, 238, 0.12);
+    background: rgba(255, 255, 255, 0.055);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(14px);
+  }
+
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.18rem;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

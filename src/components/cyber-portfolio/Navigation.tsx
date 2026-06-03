@@ -55,8 +55,8 @@ export function Navigation() {
       animate={{
         y: 0,
         opacity: 1,
-        backgroundColor: scrolled ? '#FFFFFF' : 'transparent',
-        borderBottomColor: scrolled ? '#B1ADA1' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(10,10,10,0.82)' : 'transparent',
+        borderBottomColor: scrolled ? 'rgba(244,243,238,0.12)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'blur(0px)',
       }}
       transition={
@@ -72,7 +72,7 @@ export function Navigation() {
             onClick={() => scrollToSection('hero')}
             className="flex items-center gap-2"
           >
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-cloudy/40 bg-white">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5">
               <img
                 src="/favicon.png"
                 alt=""
@@ -80,7 +80,7 @@ export function Navigation() {
                 className="h-5 w-5 object-contain"
               />
             </span>
-            <span className="text-sm font-medium tracking-wide text-[#1A1816]">
+            <span className="text-sm font-medium tracking-wide text-pampas">
               Hassan Warraich
             </span>
           </button>
@@ -113,7 +113,7 @@ export function Navigation() {
             <button
               type="button"
               onClick={() => scrollToSection('contact')}
-              className="rounded-full border border-crail bg-transparent px-5 py-2 text-sm font-medium text-crail"
+              className="rounded-full border border-crail bg-crail/10 px-5 py-2 text-sm font-medium text-crail"
             >
               Let’s talk
             </button>
@@ -122,7 +122,7 @@ export function Navigation() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-cloudy/40 bg-white text-[#1A1816] lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-pampas lg:hidden"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -137,7 +137,7 @@ export function Navigation() {
               exit={{ height: 0 }}
               transition={shouldReduce ? { duration: 0 } : { duration: 0.25, ease: 'easeOut' }}
             >
-              <div className="mt-3 rounded-2xl border border-cloudy/30 bg-white p-4">
+              <div className="mt-3 rounded-2xl border border-white/10 bg-[#0A0A0A]/95 p-4 backdrop-blur-xl">
                 <div className="flex flex-col gap-1">
                   {navItems.map((item) => {
                     const active = activeSection === item.id
@@ -149,7 +149,7 @@ export function Navigation() {
                         className={[
                           'rounded-xl px-3 py-3 text-left text-sm font-medium uppercase tracking-wide',
                           active
-                            ? 'bg-pampas text-crail'
+                            ? 'bg-crail/10 text-crail'
                             : 'text-cloudy hover:text-crail',
                         ].join(' ')}
                       >
@@ -160,7 +160,7 @@ export function Navigation() {
                   <button
                     type="button"
                     onClick={() => scrollToSection('contact')}
-                    className="mt-2 rounded-full border border-crail bg-transparent px-5 py-3 text-sm font-medium text-crail"
+                    className="mt-2 rounded-full border border-crail bg-crail/10 px-5 py-3 text-sm font-medium text-crail"
                   >
                     Let’s talk
                   </button>

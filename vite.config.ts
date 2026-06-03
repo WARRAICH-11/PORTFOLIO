@@ -53,6 +53,14 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          gsap: ['gsap', '@gsap/react'],
+        },
+      },
+    },
   },
   server: {
     port: 3000,

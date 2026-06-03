@@ -11,7 +11,7 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative z-[2] h-20 bg-[#1A1816] text-cloudy">
+    <footer className="relative z-10 h-20 border-t border-white/10 bg-[#0A0A0A] text-cloudy">
       <div className="section-inner h-full">
         <div className="flex h-full items-center justify-between">
           <div className="text-sm">

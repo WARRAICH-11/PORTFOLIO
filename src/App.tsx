@@ -1,18 +1,19 @@
 'use client';
 
 import { Toaster } from './components/ui/sonner';
+import { SmoothScroll } from './components/SmoothScroll';
+import { SpatialCanvas } from './components/canvas/SpatialCanvas';
+import { GlobalCursor } from './components/GlobalCursor';
 import { Navigation } from './components/cyber-portfolio/Navigation';
 import { Hero } from './components/cyber-portfolio/Hero';
 import { About } from './components/cyber-portfolio/About';
 import { Skills } from './components/cyber-portfolio/Skills';
 import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedServicesSlider';
 import { Projects } from './components/cyber-portfolio/Projects';
-import { VideoSection } from './components/cyber-portfolio/VideoSection';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ScrollProgress } from './components/motion/ScrollProgress';
-import { ScrollAmbient } from './components/motion/ScrollAmbient';
 import { CustomCursor } from './components/motion/CustomCursor';
 import { ThemeProvider } from 'next-themes';
 
@@ -29,10 +30,12 @@ const pageVariants = {
 export default function App() {
   const shouldReduce = useReducedMotion();
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-      <div className="min-h-screen bg-pampas text-[#1A1816]">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <SmoothScroll>
+      <div className="min-h-screen overflow-hidden bg-[#0A0A0A] text-pampas">
+        <GlobalCursor />
+        <SpatialCanvas />
         <ScrollProgress />
-        <ScrollAmbient />
         <CustomCursor />
 
         <Navigation />
@@ -40,7 +43,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           <motion.main
             key="page"
-            className="relative z-[2]"
+            className="relative z-10"
             variants={pageVariants}
             initial={shouldReduce ? false : 'initial'}
             animate={shouldReduce ? undefined : 'animate'}
@@ -51,7 +54,6 @@ export default function App() {
             <Skills />
             <FeaturedServicesSlider />
             <Projects />
-            <VideoSection />
             <Contact />
           </motion.main>
         </AnimatePresence>
@@ -60,6 +62,7 @@ export default function App() {
 
         <Toaster position="bottom-right" />
       </div>
+      </SmoothScroll>
     </ThemeProvider>
   );
 }

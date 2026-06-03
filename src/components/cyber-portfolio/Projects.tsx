@@ -6,6 +6,9 @@ import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { FadeIn } from '../motion/FadeIn';
 import { ScrollMotionLayer } from '../motion/ScrollMotionLayer';
+import { SplitReveal } from '../SplitReveal';
+import { TiltCard } from '../TiltCard';
+import { useMagnetic } from '../../hooks/useMagnetic';
 
 const ALL_PROJECTS = [
   {
@@ -210,6 +213,84 @@ const ALL_PROJECTS = [
 
 const CATEGORIES = ["All", "AI", "SaaS", "E-commerce", "Web"];
 
+type Project = (typeof ALL_PROJECTS)[number];
+
+function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce: boolean }) {
+  const titleRef = useMagnetic<HTMLAnchorElement>(0.18);
+
+  return (
+    <TiltCard
+      tiltAmount={8}
+      className="spatial-card flex h-full flex-col overflow-hidden rounded-2xl hover:border-white/30 hover:shadow-[0_26px_90px_rgba(193,95,60,0.15)]"
+    >
+      <div className="relative">
+        <ImageWithFallback
+          src={project.image}
+          alt={project.title}
+          className="h-44 w-full object-cover opacity-90 saturate-[0.85]"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="relative z-20 flex flex-1 flex-col p-6">
+        <div className="w-fit rounded-full bg-crail/20 px-3 py-1 text-xs font-medium uppercase tracking-widest text-crail">
+          {project.category}
+        </div>
+        <h3 className="mt-3 text-lg font-medium text-pampas">
+          <a
+            ref={titleRef}
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="magnetic-text inline-block"
+          >
+            {project.title}
+          </a>
+        </h3>
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-cloudy-light">
+          {project.description}
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.technologies.slice(0, 5).map((technology, index) => (
+            <motion.span
+              key={technology}
+              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-cloudy"
+              initial={shouldReduce ? false : { opacity: 0, y: 8 }}
+              whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={shouldReduce ? { duration: 0 } : { delay: 0.08 + index * 0.035 }}
+            >
+              {technology}
+            </motion.span>
+          ))}
+        </div>
+
+        <div className="mt-6 flex gap-4">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline inline-flex items-center gap-2 text-sm font-medium text-cloudy-light hover:text-crail"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Live
+          </a>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline inline-flex items-center gap-2 text-sm font-medium text-cloudy-light hover:text-crail"
+          >
+            <Github className="h-4 w-4" />
+            Code
+          </a>
+        </div>
+      </div>
+    </TiltCard>
+  );
+}
+
 export function Projects() {
   const shouldReduce = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState("All");
@@ -224,16 +305,16 @@ export function Projects() {
   const visible = showAll ? filtered : filtered.slice(0, 6);
 
   return (
-    <section id="projects" className="section bg-pampas">
+    <section id="projects" className="section spatial-section">
       <div className="section-inner">
         <ScrollMotionLayer>
         <FadeIn>
           <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
             05 — PROJECTS
           </div>
-          <h2 className="mt-4 mb-12 text-3xl font-normal tracking-tight text-[#1A1816] md:text-4xl">
+          <SplitReveal as="h2" className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl">
             Selected work.
-          </h2>
+          </SplitReveal>
         </FadeIn>
 
         <FadeIn>
@@ -251,8 +332,8 @@ export function Projects() {
                   className={[
                     "rounded-full border px-4 py-2 text-sm font-medium",
                     active
-                      ? "border-crail bg-white text-crail"
-                      : "border-cloudy/40 bg-transparent text-cloudy hover:text-crail hover:border-crail",
+                      ? "border-crail bg-crail/15 text-crail"
+                      : "border-white/10 bg-white/5 text-cloudy hover:text-crail hover:border-crail",
                   ].join(" ")}
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
@@ -281,68 +362,7 @@ export function Projects() {
             >
               {visible.map((project, index) => (
                 <FadeIn key={project.id} delay={index * 0.08} className="h-full">
-                  <motion.div
-                    className="flex h-full flex-col overflow-hidden rounded-2xl border border-cloudy/40 bg-white"
-                    whileHover={
-                      shouldReduce ? undefined : { y: -4, borderColor: "#C15F3C" }
-                    }
-                    transition={
-                      shouldReduce ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }
-                    }
-                  >
-                    <div className="relative">
-                      <ImageWithFallback
-                        src={project.image}
-                        alt={project.title}
-                        className="h-44 w-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="text-sm uppercase tracking-widest text-cloudy">
-                        {project.category}
-                      </div>
-                      <h3 className="mt-2 text-lg font-medium text-[#1A1816]">
-                        {project.title}
-                      </h3>
-                      <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[#6B6760]">
-                        {project.description}
-                      </p>
-
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {project.technologies.slice(0, 5).map((t) => (
-                          <span
-                            key={t}
-                            className="rounded-full bg-pampas px-3 py-1 text-sm font-medium text-cloudy"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 flex gap-4">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-medium text-cloudy hover:text-crail"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          Live
-                        </a>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-medium text-cloudy hover:text-crail"
-                        >
-                          <Github className="h-4 w-4" />
-                          Code
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <ProjectCard project={project} shouldReduce={shouldReduce} />
                 </FadeIn>
               ))}
             </motion.div>
@@ -355,7 +375,7 @@ export function Projects() {
               <button
                 type="button"
                 onClick={() => setShowAll((v) => !v)}
-                className="rounded-full border border-cloudy/40 bg-white px-6 py-3 text-sm font-medium text-[#1A1816] hover:border-crail"
+                className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-pampas hover:border-crail"
               >
                 {showAll ? "Show less" : "View all"}
               </button>

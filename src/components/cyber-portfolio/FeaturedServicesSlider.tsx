@@ -2,12 +2,14 @@
 
 import { FadeIn } from '../motion/FadeIn'
 import { ScrollMotionLayer } from '../motion/ScrollMotionLayer'
+import { SplitReveal } from '../SplitReveal'
+import { TiltCard } from '../TiltCard'
 
 const SERVICES = [
   {
     title: 'AI features in production',
     description:
-      'LLM-powered workflows, RAG, evaluation harnesses, and guardrails—built with observability and cost control.',
+      'LLM-powered workflows, RAG, evaluation harnesses, and guardrails - built with observability and cost control.',
   },
   {
     title: 'Full-stack delivery',
@@ -22,38 +24,41 @@ const SERVICES = [
   {
     title: 'Performance & reliability',
     description:
-      'Profiling, debugging, and system hardening—so you can scale traffic and features confidently.',
+      'Profiling, debugging, and system hardening - so you can scale traffic and features confidently.',
   },
 ]
 
 export function FeaturedServicesSlider() {
   return (
-    <section id="services" className="section bg-pampas">
+    <section id="services" className="section spatial-section">
       <div className="section-inner">
         <ScrollMotionLayer>
-        <FadeIn>
-          <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
-            04 — SERVICES
-          </div>
-          <h2 className="mt-4 mb-12 text-3xl font-normal tracking-tight text-[#1A1816] md:text-4xl">
-            How I help.
-          </h2>
-        </FadeIn>
+          <FadeIn>
+            <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
+              04 - SERVICES
+            </div>
+            <SplitReveal
+              as="h2"
+              className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl"
+            >
+              How I help.
+            </SplitReveal>
+          </FadeIn>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {SERVICES.map((s, index) => (
-            <FadeIn key={s.title} delay={index * 0.08}>
-              <div className="h-full rounded-2xl border border-cloudy/40 bg-white p-6">
-                <div className="text-xl font-medium text-[#1A1816]">
-                  {s.title}
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-[#6B6760]">
-                  {s.description}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {SERVICES.map((service, index) => (
+              <FadeIn key={service.title} delay={index * 0.08}>
+                <TiltCard className="spatial-card h-full rounded-2xl p-6 hover:border-white/30 hover:shadow-[0_24px_80px_rgba(193,95,60,0.14)]">
+                  <div className="relative z-20 text-xl font-medium text-pampas">
+                    {service.title}
+                  </div>
+                  <p className="relative z-20 mt-3 text-sm leading-relaxed text-cloudy-light">
+                    {service.description}
+                  </p>
+                </TiltCard>
+              </FadeIn>
+            ))}
+          </div>
         </ScrollMotionLayer>
       </div>
     </section>
