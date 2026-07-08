@@ -12,6 +12,7 @@ import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedSer
 import { Projects } from './components/cyber-portfolio/Projects';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
+import { AIAgentWidget } from './components/cyber-portfolio/AIAgentWidget';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ScrollProgress } from './components/motion/ScrollProgress';
 import { CustomCursor } from './components/motion/CustomCursor';
@@ -60,6 +61,7 @@ export default function App() {
 
         <Footer />
 
+        <AIAgentWidget />
         <Toaster position="bottom-right" />
       </div>
       </SmoothScroll>
