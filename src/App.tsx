@@ -2,7 +2,6 @@
 
 import { Toaster } from './components/ui/sonner';
 import { SmoothScroll } from './components/SmoothScroll';
-import { SpatialCanvas } from './components/canvas/SpatialCanvas';
 import { GlobalCursor } from './components/GlobalCursor';
 import { Navigation } from './components/cyber-portfolio/Navigation';
 import { Hero } from './components/cyber-portfolio/Hero';
@@ -14,9 +13,17 @@ import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
 import { AIAgentWidget } from './components/cyber-portfolio/AIAgentWidget';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { lazy, Suspense } from 'react';
 import { ScrollProgress } from './components/motion/ScrollProgress';
 import { CustomCursor } from './components/motion/CustomCursor';
+import { ScrollAmbient } from './components/motion/ScrollAmbient';
 import { ThemeProvider } from 'next-themes';
+
+const SpatialCanvas = lazy(() =>
+  import('./components/canvas/SpatialCanvas').then(({ SpatialCanvas: Canvas }) => ({
+    default: Canvas,
+  })),
+);
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -35,7 +42,10 @@ export default function App() {
       <SmoothScroll>
       <div className="min-h-screen overflow-hidden bg-[#0A0A0A] text-pampas">
         <GlobalCursor />
-        <SpatialCanvas />
+        <Suspense fallback={null}>
+          <SpatialCanvas />
+        </Suspense>
+        <ScrollAmbient />
         <ScrollProgress />
         <CustomCursor />
 

@@ -5,7 +5,7 @@ export function VideoSection() {
     <section id="video" className="section bg-pampas">
       <video
         className="block h-auto w-full opacity-100"
-        src="/videos/background.mp4"
+        src={`${import.meta.env.BASE_URL}videos/background.mp4`}
         autoPlay
         loop
         playsInline

@@ -4,7 +4,7 @@ import * as THREE from 'three'
 
 function getParticleCount() {
   if (typeof window === 'undefined') return 300
-  return window.innerWidth < 768 ? 100 : 300
+  return window.innerWidth < 1280 ? 120 : 200
 }
 
 export function ParticleField() {

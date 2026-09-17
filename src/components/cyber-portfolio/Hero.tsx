@@ -6,7 +6,7 @@ import { ScrollMotionLayer } from '../motion/ScrollMotionLayer'
 import { SplitReveal } from '../SplitReveal'
 import { useMagnetic } from '../../hooks/useMagnetic'
 
-const HERO_IMG = '/images/hero-profile.png'
+const HERO_IMG = `${import.meta.env.BASE_URL}images/hero-profile.png`
 
 export function Hero() {
   const shouldReduce = useReducedMotion()
@@ -136,6 +136,7 @@ export function Hero() {
                         height={600}
                         loading="eager"
                         decoding="async"
+                        fetchPriority="high"
                         className="max-h-[480px] w-full object-cover shadow-none will-change-transform"
                         style={{ filter: 'saturate(0.86) grayscale(0.16)' }}
                       />
