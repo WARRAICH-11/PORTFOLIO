@@ -90,7 +90,7 @@ export function Navigation() {
               className="flex min-w-0 items-center gap-2"
             >
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+                <img src="/favicon.png" alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
               </span>
               <span className="truncate text-sm font-medium tracking-wide text-pampas">
                 Hassan Warraich
@@ -191,7 +191,7 @@ export function Navigation() {
                   className="flex min-w-0 items-center gap-2"
                 >
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-                    <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+                    <img src="/favicon.png" alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
                   </span>
                   <span className="truncate text-sm font-medium tracking-wide text-pampas">
                     Hassan Warraich
