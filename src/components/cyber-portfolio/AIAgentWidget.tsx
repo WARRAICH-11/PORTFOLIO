@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { MessageSquare, Send, X } from 'lucide-react'
 
 const AGENT_ID = 'agent_2W3RmSP27FY1N8Vi'
-const BASE_WS_URL = `wss://api.x.ai/v1/realtime?agent_id=${AGENT_ID}`
 
 function formatStatusText(status: string) {
   switch (status) {
@@ -17,7 +16,7 @@ function formatStatusText(status: string) {
     case 'failed':
       return 'Connection failed'
     case 'missing-key':
-      return 'Missing API key'
+      return 'AI chat requires a secure server'
     default:
       return 'Ready'
   }
@@ -33,69 +32,7 @@ export function AIAgentWidget() {
   const wsRef = useRef<WebSocket | null>(null)
 
   useEffect(() => {
-    const apiKey =
-      import.meta.env.VITE_XAI_API_KEY ?? import.meta.env.XAI_API_KEY ?? ''
-
-    if (!apiKey) {
-      setStatus('missing-key')
-      return
-    }
-
-    setStatus('connecting')
-
-    const wsUrl = `${BASE_WS_URL}&authorization=${encodeURIComponent(`Bearer ${apiKey}`)}`
-
-    const socket = new WebSocket(wsUrl)
-    wsRef.current = socket
-
-    socket.onopen = () => {
-      setStatus('open')
-      socket.send(
-        JSON.stringify({
-          type: 'conversation.item.create',
-          item: {
-            type: 'message',
-            role: 'user',
-            content: [{ type: 'input_text', text: 'Hello!' }],
-          },
-        }),
-      )
-      socket.send(JSON.stringify({ type: 'response.create' }))
-    }
-
-    socket.onmessage = event => {
-      try {
-        const payload = JSON.parse(event.data)
-        if (payload.type === 'response.output_text.delta' || payload.type === 'response.output_audio_transcript.delta') {
-          setMessages(prev => {
-            const last = prev[prev.length - 1]
-            if (last?.role === 'assistant') {
-              return [...prev.slice(0, -1), { ...last, text: `${last.text}${payload.delta}` }]
-            }
-            return [...prev, { role: 'assistant', text: payload.delta }]
-          })
-        } else if (payload.type === 'response.output_audio.delta') {
-          // Audio stream payloads may contain base64 PCM data.
-          // You can extend this to decode and play audio in the browser.
-          console.debug('Audio delta received', payload.delta)
-        }
-      } catch (error) {
-        console.error('AI agent websocket message parse error', error)
-      }
-    }
-
-    socket.onerror = () => {
-      setStatus('failed')
-    }
-
-    socket.onclose = () => {
-      setStatus('closed')
-    }
-
-    return () => {
-      socket.close()
-      wsRef.current = null
-    }
+    setStatus('missing-key')
   }, [])
 
   const sendMessage = (text: string) => {
