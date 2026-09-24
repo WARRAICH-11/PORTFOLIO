@@ -27,7 +27,7 @@ function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
         {skills.map((skill, index) => (
           <motion.span
             key={skill}
-            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-cloudy-light"
+            className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-1 text-xs font-medium text-cloudy-light"
             initial={shouldReduce ? false : { opacity: 0, scale: 0.8 }}
             animate={shouldReduce ? undefined : inView ? { opacity: 1, scale: 1 } : undefined}
             transition={
@@ -50,12 +50,10 @@ export function Skills() {
       <div className="section-inner">
         <ScrollMotionLayer>
           <FadeIn>
-            <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
-              03 - SKILLS
-            </div>
+            
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl"
+              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
             >
               Tools I ship with.
             </SplitReveal>

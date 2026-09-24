@@ -5,23 +5,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['Instrument Serif', 'Georgia', 'serif'],
+        sans: ['SF Pro Text', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         crail: {
-          DEFAULT: "#C15F3C",
-          light: "#D4795A",
-          dark: "#A04A2C",
+          DEFAULT: "#2997FF",
+          light: "#64B5FF",
+          dark: "#1478D4",
         },
         cloudy: {
-          DEFAULT: "#B1ADA1",
-          light: "#C8C5BB",
-          dark: "#928E83",
+          DEFAULT: "#86868B",
+          light: "#F5F5F7",
+          dark: "#6E6E73",
         },
         pampas: {
-          DEFAULT: "#F4F3EE",
-          dark: "#E8E6DF",
+          DEFAULT: "#F5F5F7",
+          dark: "#D2D2D7",
         },
       },
       animation: {

@@ -43,10 +43,10 @@ export function SpatialCanvas() {
         style={{ background: 'transparent' }}
       >
         <Suspense fallback={null}>
-          <fog attach="fog" args={['#0A0A0A', 10, 26]} />
+          <fog attach="fog" args={['#0D0D0E', 10, 26]} />
           <ambientLight intensity={0.32} />
           <directionalLight position={[5, 5, 5]} intensity={1.15} />
-          <pointLight position={[-5, 3, -4]} intensity={1.1} color="#C15F3C" />
+          <pointLight position={[-5, 3, -4]} intensity={1.1} color="#2997FF" />
           <pointLight position={[4, -3, -5]} intensity={0.45} color="#B1ADA1" />
           <SceneContent />
           <ContactShadows position={[0, -2.15, 0]} opacity={0.24} scale={18} blur={2.5} far={4} />

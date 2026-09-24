@@ -215,13 +215,13 @@ const CATEGORIES = ["All", "AI", "SaaS", "E-commerce", "Web"];
 
 type Project = (typeof ALL_PROJECTS)[number];
 
-function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce: boolean }) {
+function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce: boolean | null }) {
   const titleRef = useMagnetic<HTMLAnchorElement>(0.18);
 
   return (
     <TiltCard
       tiltAmount={8}
-      className="spatial-card flex h-full flex-col overflow-hidden rounded-2xl hover:border-white/30 hover:shadow-[0_26px_90px_rgba(193,95,60,0.15)]"
+      className="spatial-card flex h-full flex-col overflow-hidden rounded-lg transition-[transform,background-color] duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:bg-[#1C1C1E]"
     >
       <div className="relative">
         <ImageWithFallback
@@ -233,7 +233,7 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
       </div>
 
       <div className="relative z-20 flex flex-1 flex-col p-6">
-        <div className="w-fit rounded-full bg-crail/20 px-3 py-1 text-xs font-medium uppercase tracking-widest text-crail">
+        <div className="w-fit rounded-md bg-white/5 px-2 py-1 text-xs font-medium uppercase tracking-[0.08em] text-cloudy">
           {project.category}
         </div>
         <h3 className="mt-3 text-lg font-medium text-pampas">
@@ -252,10 +252,10 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
         </p>
 
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.technologies.slice(0, 5).map((technology, index) => (
+          {project.technologies.slice(0, 3).map((technology, index) => (
             <motion.span
               key={technology}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-cloudy"
+              className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-1 text-xs font-medium text-cloudy"
               initial={shouldReduce ? false : { opacity: 0, y: 8 }}
               whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -309,10 +309,10 @@ export function Projects() {
       <div className="section-inner">
         <ScrollMotionLayer>
         <FadeIn>
-          <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
+          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-cloudy">
             05 — PROJECTS
           </div>
-          <SplitReveal as="h2" className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl">
+          <SplitReveal as="h2" className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl">
             Selected work.
           </SplitReveal>
         </FadeIn>
@@ -357,12 +357,12 @@ export function Projects() {
               transition={
                 shouldReduce
                   ? { duration: 0 }
-                  : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }
+                  : { duration: 0.35, ease: [0.25, 1, 0.5, 1] as const }
               }
             >
               {visible.map((project, index) => (
                 <FadeIn key={project.id} delay={index * 0.08} className="h-full">
-                  <ProjectCard project={project} shouldReduce={shouldReduce} />
+                  <ProjectCard project={project} shouldReduce={shouldReduce ?? false} />
                 </FadeIn>
               ))}
             </motion.div>

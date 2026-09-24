@@ -34,12 +34,10 @@ export function FeaturedServicesSlider() {
       <div className="section-inner">
         <ScrollMotionLayer>
           <FadeIn>
-            <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
-              04 - SERVICES
-            </div>
+            
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl"
+              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
             >
               How I help.
             </SplitReveal>

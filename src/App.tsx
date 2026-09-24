@@ -11,7 +11,6 @@ import { FeaturedServicesSlider } from './components/cyber-portfolio/FeaturedSer
 import { Projects } from './components/cyber-portfolio/Projects';
 import { Contact } from './components/cyber-portfolio/Contact';
 import { Footer } from './components/cyber-portfolio/Footer';
-import { AIAgentWidget } from './components/cyber-portfolio/AIAgentWidget';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
 import { ScrollProgress } from './components/motion/ScrollProgress';
@@ -30,7 +29,7 @@ const pageVariants = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] as const },
   },
   exit: { opacity: 0, y: -8, transition: { duration: 0.25 } },
 };
@@ -40,7 +39,7 @@ export default function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <SmoothScroll>
-      <div className="min-h-screen overflow-hidden bg-[#0A0A0A] text-pampas">
+      <div className="min-h-screen overflow-hidden bg-[#0D0D0E] text-pampas">
         <GlobalCursor />
         <Suspense fallback={null}>
           <SpatialCanvas />
@@ -71,7 +70,6 @@ export default function App() {
 
         <Footer />
 
-        <AIAgentWidget />
         <Toaster position="bottom-right" />
       </div>
       </SmoothScroll>

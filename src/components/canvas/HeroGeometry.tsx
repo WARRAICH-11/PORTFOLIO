@@ -28,7 +28,7 @@ export function HeroGeometry() {
           temporalDistortion={0.08}
           clearcoat={1}
           attenuationDistance={1}
-          attenuationColor="#0A0A0A"
+          attenuationColor="#0D0D0E"
           color="#F4F3EE"
           transmission={0.9}
           roughness={0.25}

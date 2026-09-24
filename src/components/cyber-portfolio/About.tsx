@@ -10,12 +10,10 @@ export function About() {
       <div className="section-inner">
         <ScrollMotionLayer>
           <FadeIn>
-            <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
-              02 - ABOUT
-            </div>
+            
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-normal tracking-normal text-pampas md:text-4xl"
+              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
             >
               engineered & shipped.
             </SplitReveal>

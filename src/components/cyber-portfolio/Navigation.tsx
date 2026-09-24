@@ -70,18 +70,18 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className="fixed left-0 right-0 top-0 z-[70] border-b border-transparent backdrop-blur-0 shadow-none"
+      className="fixed left-0 right-0 top-0 z-[70] border-b border-white/[0.08] bg-[rgba(22,22,24,0.75)] shadow-none backdrop-blur-xl"
       initial={shouldReduce ? false : { y: -12, opacity: 0 }}
       animate={{
         y: 0,
         opacity: 1,
-        backgroundColor: scrolled ? 'rgba(10,10,10,0.82)' : 'transparent',
-        borderBottomColor: scrolled ? 'rgba(244,243,238,0.12)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'blur(0px)',
+        backgroundColor: 'rgba(22,22,24,0.75)',
+        borderBottomColor: 'rgba(255,255,255,0.08)',
+        backdropFilter: 'blur(20px)',
       }}
       transition={shouldReduce ? { duration: 0 } : { duration: 0.3, ease: 'easeOut' }}
     >
-      <div className="section-inner h-14 md:h-16">
+      <div className="section-inner h-[52px]">
         <div className="flex h-full items-center justify-between">
           <div className="flex min-w-0 items-center gap-4">
             <a
@@ -178,7 +178,7 @@ export function Navigation() {
             />
 
             <motion.aside
-              className="fixed bottom-0 right-0 top-0 z-[72] flex w-[min(22rem,88vw)] flex-col border-l border-white/10 bg-[#0A0A0A]/98 px-5 pb-6 pt-5 shadow-2xl backdrop-blur-xl lg:hidden"
+              className="fixed bottom-0 right-0 top-0 z-[72] flex w-[min(22rem,88vw)] flex-col border-l border-white/10 bg-[#161618]/98 px-5 pb-6 pt-5 shadow-2xl backdrop-blur-xl lg:hidden"
               initial={shouldReduce ? false : { x: '100%' }}
               animate={{ x: 0 }}
               exit={shouldReduce ? { opacity: 0 } : { x: '100%' }}

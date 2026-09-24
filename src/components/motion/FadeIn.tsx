@@ -24,7 +24,7 @@ export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
       transition={
         shouldReduce
           ? { duration: 0 }
-          : { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }
+          : { duration: 0.6, delay, ease: [0.25, 1, 0.5, 1] }
       }
     >
       {children}

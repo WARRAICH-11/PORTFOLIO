@@ -58,8 +58,8 @@ export function SkillConstellation() {
         <mesh key={index} position={node.position} scale={node.scale}>
           <octahedronGeometry args={[1, 0]} />
           <meshPhysicalMaterial
-            color={index % 2 === 0 ? '#C15F3C' : '#B1ADA1'}
-            emissive={index % 2 === 0 ? '#C15F3C' : '#B1ADA1'}
+            color={index % 2 === 0 ? '#2997FF' : '#86868B'}
+            emissive={index % 2 === 0 ? '#2997FF' : '#86868B'}
             emissiveIntensity={0.42}
             metalness={0.72}
             roughness={0.24}

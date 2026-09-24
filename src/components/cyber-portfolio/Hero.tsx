@@ -25,16 +25,13 @@ export function Hero() {
     <section id="hero" ref={sectionRef} className="section spatial-section">
       <div className="section-inner pt-20 md:pt-24">
         <ScrollMotionLayer>
-          <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:gap-10">
-            <div className="min-w-0 flex-1">
-              <div className="text-sm font-mono tracking-widest uppercase text-cloudy">
-                01 - INTRO
-              </div>
+          <div className="grid items-center gap-10 md:grid-cols-12">
+            <div className="min-w-0 md:col-span-7">
 
               <SplitReveal
                 as="h1"
                 stagger={0.035}
-                className="mt-4 text-5xl font-normal tracking-normal text-pampas md:text-6xl"
+                className="mt-4 text-[3rem] font-bold leading-[1.1] tracking-[-0.02em] text-pampas"
               >
                 Hassan Warraich
               </SplitReveal>
@@ -43,9 +40,9 @@ export function Hero() {
                 as="p"
                 delay={0.18}
                 stagger={0.012}
-                className="mt-4 text-lg font-medium tracking-normal text-cloudy-light md:text-xl"
+                className="mt-4 text-lg font-normal leading-[1.6] tracking-normal text-cloudy-light"
               >
-                SOFTWARE ENGINEER
+                Software engineer
               </SplitReveal>
 
               <p className="mt-6 max-w-[60ch] text-base font-normal leading-relaxed text-cloudy-light">
@@ -53,7 +50,7 @@ export function Hero() {
                 data-driven products - built for clarity, reliability, and measurable business outcomes.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 <motion.button
                   ref={viewWorkRef}
                   type="button"
@@ -62,7 +59,7 @@ export function Hero() {
                       .getElementById('projects')
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-crail px-8 text-sm font-medium text-white shadow-[0_18px_55px_rgba(193,95,60,0.26)]"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-pampas px-8 text-sm font-medium text-black transition-transform duration-100 ease-out"
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -78,7 +75,7 @@ export function Hero() {
                       .getElementById('contact')
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-crail/80 bg-white/5 px-8 text-sm font-medium text-pampas backdrop-blur-md"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.08] px-8 text-sm font-medium text-pampas backdrop-blur-md transition-transform duration-100 ease-out"
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -100,19 +97,19 @@ export function Hero() {
               />
             </div>
 
-            <div className="relative w-full max-w-[280px] shrink-0 self-center md:mt-0 md:w-[40%] md:max-w-none md:self-auto">
+            <div className="relative w-full md:col-span-5">
               <motion.div
                 className="relative mx-auto w-full md:mx-0 md:ml-auto"
                 style={{ y: imageParallaxY }}
               >
                 <motion.div
-                  className="spatial-card relative max-h-[480px] overflow-hidden rounded-2xl will-change-transform"
+                  className="relative max-h-[480px] overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#161618] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] will-change-transform"
                   initial={shouldReduce ? false : { opacity: 0, x: 32, scale: 0.97 }}
                   animate={shouldReduce ? undefined : { opacity: 1, x: 0, scale: 1 }}
                   transition={
                     shouldReduce
                       ? { duration: 0 }
-                      : { delay: 0.35, duration: 0.75, ease: [0.22, 1, 0.36, 1] }
+                      : { delay: 0.35, duration: 0.75, ease: [0.25, 1, 0.5, 1] as const }
                   }
                 >
                   <motion.div
@@ -142,14 +139,6 @@ export function Hero() {
                       />
                     </motion.div>
 
-                    {!shouldReduce && (
-                      <motion.div
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-crail/25"
-                        animate={{ opacity: [0.25, 0.55, 0.25] }}
-                        transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                      />
-                    )}
                   </motion.div>
                 </motion.div>
               </motion.div>

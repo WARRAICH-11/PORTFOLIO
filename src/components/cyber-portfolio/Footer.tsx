@@ -10,7 +10,7 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 h-20 border-t border-white/10 bg-[#0A0A0A] text-cloudy">
+    <footer className="relative z-10 h-20 border-t border-white/10 bg-[#0D0D0E] text-cloudy">
       <div className="section-inner h-full">
         <div className="flex h-full items-center justify-between gap-4">
           <div className="text-sm">(c) {new Date().getFullYear()} Hassan Warraich</div>
