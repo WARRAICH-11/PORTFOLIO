@@ -221,22 +221,22 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
   return (
     <TiltCard
       tiltAmount={8}
-      className="spatial-card flex h-full flex-col overflow-hidden rounded-lg transition-[transform,background-color] duration-[250ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-1 hover:bg-[#1C1C1E]"
+      className="spatial-card flex h-full flex-col overflow-hidden"
     >
       <div className="relative">
         <ImageWithFallback
           src={project.image}
           alt={project.title}
-          className="h-44 w-full object-cover opacity-90 saturate-[0.85]"
+          className="project-media w-full opacity-90"
           loading="lazy"
         />
       </div>
 
       <div className="relative z-20 flex flex-1 flex-col p-6">
-        <div className="w-fit rounded-md bg-white/5 px-2 py-1 text-xs font-medium uppercase tracking-[0.08em] text-cloudy">
+        <div className="portfolio-badge portfolio-metric w-fit uppercase tracking-[0.08em]">
           {project.category}
         </div>
-        <h3 className="mt-3 text-lg font-medium text-pampas">
+        <h3 className="mt-3 text-lg font-medium">
           <a
             ref={titleRef}
             href={project.liveUrl}
@@ -247,7 +247,7 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
             {project.title}
           </a>
         </h3>
-        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-cloudy-light">
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed portfolio-muted">
           {project.description}
         </p>
 
@@ -255,7 +255,7 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
           {project.technologies.slice(0, 3).map((technology, index) => (
             <motion.span
               key={technology}
-              className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-1 text-xs font-medium text-cloudy"
+              className="portfolio-badge"
               initial={shouldReduce ? false : { opacity: 0, y: 8 }}
               whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -271,7 +271,7 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-underline inline-flex items-center gap-2 text-sm font-medium text-cloudy-light hover:text-crail"
+            className="link-underline inline-flex items-center gap-2 text-sm font-medium portfolio-muted hover:text-[var(--blue)]"
           >
             <ExternalLink className="h-4 w-4" />
             Live
@@ -280,7 +280,7 @@ function ProjectCard({ project, shouldReduce }: { project: Project; shouldReduce
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-underline inline-flex items-center gap-2 text-sm font-medium text-cloudy-light hover:text-crail"
+            className="link-underline inline-flex items-center gap-2 text-sm font-medium portfolio-muted hover:text-[var(--blue)]"
           >
             <Github className="h-4 w-4" />
             Code
@@ -309,10 +309,10 @@ export function Projects() {
       <div className="section-inner">
         <ScrollMotionLayer>
         <FadeIn>
-          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-cloudy">
+          <div className="text-xs font-semibold uppercase tracking-[0.08em] portfolio-muted">
             05 — PROJECTS
           </div>
-          <SplitReveal as="h2" className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl">
+          <SplitReveal as="h2" className="portfolio-heading mt-4 mb-12">
             Selected work.
           </SplitReveal>
         </FadeIn>
@@ -330,10 +330,10 @@ export function Projects() {
                     setShowAll(false);
                   }}
                   className={[
-                    "rounded-full border px-4 py-2 text-sm font-medium",
+                    "portfolio-button border text-sm",
                     active
-                      ? "border-crail bg-crail/15 text-crail"
-                      : "border-white/10 bg-white/5 text-cloudy hover:text-crail hover:border-crail",
+                      ? "border-[var(--blue)] bg-[color-mix(in_srgb,var(--blue)_15%,transparent)] text-[var(--blue)]"
+                      : "border-white/10 bg-[var(--surface)] portfolio-muted hover:text-[var(--blue)] hover:border-[var(--blue)]",
                   ].join(" ")}
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
@@ -375,7 +375,7 @@ export function Projects() {
               <button
                 type="button"
                 onClick={() => setShowAll((v) => !v)}
-                className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-pampas hover:border-crail"
+                className="portfolio-button portfolio-button-secondary"
               >
                 {showAll ? "Show less" : "View all"}
               </button>

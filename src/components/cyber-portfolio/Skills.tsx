@@ -21,13 +21,13 @@ function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
   const shouldReduce = useReducedMotion()
 
   return (
-    <div ref={ref} className="spatial-card rounded-2xl p-6">
-      <div className="mb-3 text-sm uppercase tracking-widest text-cloudy">{label}</div>
+    <div ref={ref} className="spatial-card p-6">
+      <div className="mb-3 text-sm uppercase tracking-widest portfolio-muted">{label}</div>
       <div className="flex flex-wrap gap-2">
         {skills.map((skill, index) => (
           <motion.span
             key={skill}
-            className="rounded-md border border-white/[0.08] bg-white/5 px-2 py-1 text-xs font-medium text-cloudy-light"
+            className="portfolio-badge"
             initial={shouldReduce ? false : { opacity: 0, scale: 0.8 }}
             animate={shouldReduce ? undefined : inView ? { opacity: 1, scale: 1 } : undefined}
             transition={
@@ -45,6 +45,8 @@ function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
 }
 
 export function Skills() {
+  const allSkills = GROUPS.flatMap((group) => group.skills)
+
   return (
     <section id="skills" className="section spatial-section">
       <div className="section-inner">
@@ -53,13 +55,27 @@ export function Skills() {
             
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
+              className="portfolio-heading mt-4 mb-12"
             >
               Tools I ship with.
             </SplitReveal>
           </FadeIn>
 
           <FadeIn>
+            <div className="tech-marquee mb-8" tabIndex={0} aria-label="Technology stack">
+              <div className="tech-marquee-track py-2">
+                <div className="flex gap-3">
+                  {allSkills.map((skill) => (
+                    <span key={skill} className="portfolio-badge portfolio-metric">{skill}</span>
+                  ))}
+                </div>
+                <div className="flex gap-3" aria-hidden="true">
+                  {allSkills.map((skill) => (
+                    <span key={`duplicate-${skill}`} className="portfolio-badge portfolio-metric">{skill}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
               {GROUPS.map((group) => (
                 <SkillGroup key={group.label} label={group.label} skills={group.skills} />
@@ -71,4 +87,3 @@ export function Skills() {
     </section>
   )
 }
-

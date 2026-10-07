@@ -37,7 +37,7 @@ export function FeaturedServicesSlider() {
             
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
+              className="portfolio-heading mt-4 mb-12"
             >
               How I help.
             </SplitReveal>
@@ -46,11 +46,11 @@ export function FeaturedServicesSlider() {
           <div className="grid gap-4 md:grid-cols-2">
             {SERVICES.map((service, index) => (
               <FadeIn key={service.title} delay={index * 0.08}>
-                <TiltCard className="spatial-card h-full rounded-2xl p-6 hover:border-white/30 hover:shadow-[0_24px_80px_rgba(193,95,60,0.14)]">
-                  <div className="relative z-20 text-xl font-medium text-pampas">
+                <TiltCard className="spatial-card h-full p-6">
+                  <div className="relative z-20 text-xl font-medium">
                     {service.title}
                   </div>
-                  <p className="relative z-20 mt-3 text-sm leading-relaxed text-cloudy-light">
+                  <p className="relative z-20 mt-3 text-sm leading-relaxed portfolio-muted">
                     {service.description}
                   </p>
                 </TiltCard>
@@ -62,4 +62,3 @@ export function FeaturedServicesSlider() {
     </section>
   )
 }
-

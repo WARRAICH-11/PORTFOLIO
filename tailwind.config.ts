@@ -5,23 +5,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['SF Pro Text', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Goli', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Goli', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         crail: {
-          DEFAULT: "#2997FF",
-          light: "#64B5FF",
-          dark: "#1478D4",
+          DEFAULT: "var(--blue)",
+          light: "var(--link)",
+          dark: "var(--blue)",
         },
         cloudy: {
-          DEFAULT: "#86868B",
-          light: "#F5F5F7",
-          dark: "#6E6E73",
+          DEFAULT: "var(--text-muted)",
+          light: "var(--text)",
+          dark: "var(--text-muted)",
         },
         pampas: {
-          DEFAULT: "#F5F5F7",
-          dark: "#D2D2D7",
+          DEFAULT: "var(--text)",
+          dark: "var(--text-muted)",
         },
       },
       animation: {
@@ -42,4 +42,3 @@ export default {
   },
   plugins: [],
 } satisfies Config
-

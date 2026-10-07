@@ -31,7 +31,7 @@ export function Hero() {
               <SplitReveal
                 as="h1"
                 stagger={0.035}
-                className="mt-4 text-[3rem] font-bold leading-[1.1] tracking-[-0.02em] text-pampas"
+                className="portfolio-display mt-4"
               >
                 Hassan Warraich
               </SplitReveal>
@@ -40,12 +40,12 @@ export function Hero() {
                 as="p"
                 delay={0.18}
                 stagger={0.012}
-                className="mt-4 text-lg font-normal leading-[1.6] tracking-normal text-cloudy-light"
+                className="mt-4 text-lg font-normal portfolio-muted"
               >
                 Software engineer
               </SplitReveal>
 
-              <p className="mt-6 max-w-[60ch] text-base font-normal leading-relaxed text-cloudy-light">
+              <p className="portfolio-body mt-6 max-w-[60ch]">
                 I help teams ship production-grade AI features, modern web apps, and
                 data-driven products - built for clarity, reliability, and measurable business outcomes.
               </p>
@@ -59,7 +59,7 @@ export function Hero() {
                       .getElementById('projects')
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-pampas px-8 text-sm font-medium text-black transition-transform duration-100 ease-out"
+                  className="portfolio-button portfolio-button-primary"
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -75,7 +75,7 @@ export function Hero() {
                       .getElementById('contact')
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.08] px-8 text-sm font-medium text-pampas backdrop-blur-md transition-transform duration-100 ease-out"
+                  className="portfolio-button portfolio-button-secondary"
                   whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                   whileTap={shouldReduce ? undefined : { scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
@@ -86,7 +86,7 @@ export function Hero() {
 
               <motion.div
                 aria-hidden
-                className="mt-20 h-16 w-px origin-top bg-gradient-to-b from-crail to-transparent"
+                className="mt-20 h-16 w-px origin-top bg-gradient-to-b from-[var(--blue)] to-transparent"
                 initial={shouldReduce ? false : { scaleY: 0, opacity: 0 }}
                 animate={shouldReduce ? undefined : { scaleY: 1, opacity: [0, 1, 0.38] }}
                 transition={
@@ -103,7 +103,7 @@ export function Hero() {
                 style={{ y: imageParallaxY }}
               >
                 <motion.div
-                  className="relative max-h-[480px] overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#161618] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] will-change-transform"
+                  className="spatial-card relative max-h-[480px] overflow-hidden will-change-transform"
                   initial={shouldReduce ? false : { opacity: 0, x: 32, scale: 0.97 }}
                   animate={shouldReduce ? undefined : { opacity: 1, x: 0, scale: 1 }}
                   transition={
@@ -134,8 +134,7 @@ export function Hero() {
                         loading="eager"
                         decoding="async"
                         fetchPriority="high"
-                        className="max-h-[480px] w-full object-cover shadow-none will-change-transform"
-                        style={{ filter: 'saturate(0.86) grayscale(0.16)' }}
+                        className="media-cover max-h-[480px] w-full will-change-transform"
                       />
                     </motion.div>
 
@@ -149,4 +148,3 @@ export function Hero() {
     </section>
   )
 }
-

@@ -60,7 +60,7 @@ export function Contact() {
             </div>
             <SplitReveal
               as="h2"
-              className="mt-4 mb-12 text-3xl font-semibold tracking-[-0.02em] text-pampas md:text-4xl"
+              className="portfolio-heading mt-4 mb-12"
             >
               Let's build something.
             </SplitReveal>
@@ -68,7 +68,7 @@ export function Contact() {
 
           <FadeIn>
             <div className="grid gap-8 lg:grid-cols-2">
-              <div className="spatial-card rounded-2xl p-6">
+              <div className="spatial-card p-6">
                 <form onSubmit={onSubmit} className="space-y-5">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-pampas">
@@ -80,7 +80,7 @@ export function Contact() {
                       required
                       value={form.name}
                       onChange={(e) => setForm((previous) => ({ ...previous, name: e.target.value }))}
-                      className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-pampas placeholder:text-cloudy focus-visible:ring-crail"
+                      className="portfolio-input"
                       placeholder="Your name"
                     />
                   </div>
@@ -96,7 +96,7 @@ export function Contact() {
                       required
                       value={form.email}
                       onChange={(e) => setForm((previous) => ({ ...previous, email: e.target.value }))}
-                      className="h-11 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-pampas placeholder:text-cloudy focus-visible:ring-crail"
+                      className="portfolio-input"
                       placeholder="you@company.com"
                     />
                   </div>
@@ -112,7 +112,7 @@ export function Contact() {
                       rows={5}
                       value={form.message}
                       onChange={(e) => setForm((previous) => ({ ...previous, message: e.target.value }))}
-                      className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-pampas placeholder:text-cloudy focus-visible:ring-crail"
+                      className="portfolio-input min-h-32 resize-none"
                       placeholder="What are you building?"
                     />
                   </div>
@@ -122,8 +122,8 @@ export function Contact() {
                       ref={submitRef}
                       type="submit"
                       disabled={submitting}
-                      className="w-full rounded-full bg-crail px-6 py-3 text-sm font-medium text-white shadow-[0_18px_60px_rgba(193,95,60,0.3)] sm:w-auto disabled:opacity-60"
-                      whileHover={shouldReduce ? undefined : { scale: 1.05, backgroundColor: '#D4795A' }}
+                      className="portfolio-button portfolio-button-primary w-full sm:w-auto"
+                      whileHover={shouldReduce ? undefined : { scale: 1.02 }}
                       whileTap={shouldReduce ? undefined : { scale: 0.97 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                     >
@@ -138,7 +138,7 @@ export function Contact() {
                     {status === 'error' && (
                       <div className="text-sm text-cloudy-light">
                         Couldn't send. Please email{' '}
-                        <a className="text-crail hover:underline" href="mailto:code.HASSAN@outlook.com">
+                        <a className="portfolio-link hover:underline" href="mailto:code.HASSAN@outlook.com">
                           code.HASSAN@outlook.com
                         </a>
                         .
@@ -153,18 +153,18 @@ export function Contact() {
               </div>
 
               <motion.div
-                className="spatial-card rounded-2xl p-6"
+                className="spatial-card p-6"
                 initial={shouldReduce ? false : { opacity: 0, y: 30 }}
                 whileInView={shouldReduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={shouldReduce ? { duration: 0 } : { duration: 0.7, ease: 'easeOut' }}
               >
-                <div className="text-sm font-medium text-pampas">Direct</div>
-                <div className="mt-3 space-y-3 text-sm text-cloudy-light">
+                <div className="text-sm font-medium">Direct</div>
+                <div className="mt-3 space-y-3 text-sm portfolio-muted">
                   <div>
                     <div className="text-sm uppercase tracking-widest text-cloudy">Email</div>
                     <a
-                      className="link-underline mt-1 inline-block text-crail"
+                      className="link-underline portfolio-link mt-1 inline-block"
                       href="mailto:code.HASSAN@outlook.com"
                     >
                       code.HASSAN@outlook.com
@@ -183,4 +183,3 @@ export function Contact() {
     </section>
   )
 }
-

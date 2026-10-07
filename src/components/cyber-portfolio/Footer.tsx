@@ -10,7 +10,7 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 h-20 border-t border-white/10 bg-[#0D0D0E] text-cloudy">
+    <footer className="relative z-10 h-20 border-t border-white/10 bg-transparent portfolio-muted">
       <div className="section-inner h-full">
         <div className="flex h-full items-center justify-between gap-4">
           <div className="text-sm">(c) {new Date().getFullYear()} Hassan Warraich</div>
@@ -25,7 +25,7 @@ export function Footer() {
                   aria-label={link.label}
                   target={external ? '_blank' : undefined}
                   rel={external ? 'noopener noreferrer' : undefined}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-cloudy/30 transition hover:border-crail hover:text-crail"
+                  className="portfolio-focus flex h-9 w-9 items-center justify-center rounded-full border border-white/30 transition hover:border-[var(--blue)] hover:text-[var(--blue)]"
                 >
                   <Icon className="h-4 w-4" />
                 </a>

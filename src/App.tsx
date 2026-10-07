@@ -39,7 +39,7 @@ export default function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <SmoothScroll>
-      <div className="min-h-screen overflow-hidden bg-[#0D0D0E] text-pampas">
+      <div className="min-h-screen overflow-hidden bg-transparent text-pampas">
         <GlobalCursor />
         <Suspense fallback={null}>
           <SpatialCanvas />
