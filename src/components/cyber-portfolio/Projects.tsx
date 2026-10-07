@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { SplitReveal } from '../SplitReveal';
 
@@ -229,7 +229,7 @@ function MarqueeProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [marqueeDirection, setMarqueeDirection] = useState<'forward' | 'backward'>('forward');
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(() => {
     return activeCategory === "All"
@@ -238,6 +238,17 @@ export function Projects() {
   }, [activeCategory]);
 
   const visible = filtered;
+
+  const scrollMarquee = (direction: 'forward' | 'backward') => {
+    const container = marqueeRef.current;
+    if (!container) return;
+
+    // Scroll by roughly one card width (card width + gap). Adjust as needed.
+    const cardWidth = 340;
+    const amount = direction === 'forward' ? cardWidth : -cardWidth;
+
+    container.scrollBy({ left: amount, behavior: 'smooth' });
+  };
 
   return (
     <section id="projects" className="section spatial-section">
@@ -259,9 +270,7 @@ export function Projects() {
                 <button
                   key={cat}
                   type="button"
-                  onClick={() => {
-                    setActiveCategory(cat);
-                  }}
+                  onClick={() => setActiveCategory(cat)}
                   className={[
                     "portfolio-button border text-sm",
                     active
@@ -277,21 +286,41 @@ export function Projects() {
         </div>
 
         <div className="project-marquee-shell mt-8">
-          <div className="project-marquee" tabIndex={0} aria-label="Selected projects">
-            <div className={`project-marquee-track ${marqueeDirection === 'backward' ? 'is-backward' : ''}`}>
+          <div
+            ref={marqueeRef}
+            className="project-marquee"
+            tabIndex={0}
+            aria-label="Selected projects"
+          >
+            <div className="project-marquee-track">
               <div className="project-marquee-group">
-                {visible.map((project) => <MarqueeProjectCard key={project.id} project={project} />)}
+                {visible.map((project) => (
+                  <MarqueeProjectCard key={project.id} project={project} />
+                ))}
               </div>
               <div className="project-marquee-group" aria-hidden="true">
-                {visible.map((project) => <MarqueeProjectCard key={`duplicate-${project.id}`} project={project} />)}
+                {visible.map((project) => (
+                  <MarqueeProjectCard key={`duplicate-${project.id}`} project={project} />
+                ))}
               </div>
             </div>
           </div>
+
           <div className="project-marquee-controls" aria-label="Project marquee controls">
-            <button type="button" className="portfolio-focus project-marquee-control" aria-label="Move projects backward" onClick={() => setMarqueeDirection('backward')}>
+            <button
+              type="button"
+              className="portfolio-focus project-marquee-control"
+              aria-label="Move projects backward"
+              onClick={() => scrollMarquee('backward')}
+            >
               <ChevronLeft aria-hidden="true" />
             </button>
-            <button type="button" className="portfolio-focus project-marquee-control" aria-label="Move projects forward" onClick={() => setMarqueeDirection('forward')}>
+            <button
+              type="button"
+              className="portfolio-focus project-marquee-control"
+              aria-label="Move projects forward"
+              onClick={() => scrollMarquee('forward')}
+            >
               <ChevronRight aria-hidden="true" />
             </button>
           </div>
