@@ -76,7 +76,7 @@ section { scroll-margin-top: 100px; }
 @keyframes skill-float { 0%, 100% { transform: rotateY(-12deg) translateY(0); } 50% { transform: rotateY(18deg) translateY(-2px); } }
 
 .project-carousel-stage { min-height: 640px; }
-.dna-carousel { position: relative; height: 640px; touch-action: none; cursor: grab; }
+.dna-carousel { position: relative; height: 640px; aspect-ratio: 16 / 9; overflow: hidden; touch-action: pan-y; overscroll-behavior: contain; cursor: grab; contain: layout paint; }
 .dna-carousel:active { cursor: grabbing; }
 .dna-carousel canvas { position: absolute !important; inset: 0; }
 .dna-carousel-hint { position: absolute; right: var(--space-16); bottom: var(--space-16); border: 1px solid var(--border); border-radius: var(--radius-pill); background: rgba(18, 24, 41, 0.78); padding: var(--space-8) var(--space-12); color: var(--text-muted); font-size: 14px; pointer-events: none; }
