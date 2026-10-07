@@ -9,8 +9,22 @@ import { ScrollMotionLayer } from '../motion/ScrollMotionLayer';
 import { SplitReveal } from '../SplitReveal';
 import { TiltCard } from '../TiltCard';
 import { useMagnetic } from '../../hooks/useMagnetic';
+import { DNAProjectCarousel } from './DNAProjectCarousel';
 
 const ALL_PROJECTS = [
+  {
+    id: 19,
+    title: "ATM-Management-System",
+    description: "Python Personal Banking System.",
+    image: "https://plus.unsplash.com/premium_photo-1676637656277-498f73258bec?q=80&w=1932&auto=format&fit=crop",
+    technologies: ["python", "flask", "sqlite", "Full-Stack", "AI/ML" ,"JSON" ],
+    liveUrl: "https://warraich11.pythonanywhere.com/",
+    githubUrl: "https://github.com/WARRAICH-11/ATM-Management-System",
+    category: "Python",
+    featured: true,
+  },
+
+  
   {
     id: 1,
     title: "NeuroCalm",
@@ -22,6 +36,7 @@ const ALL_PROJECTS = [
     category: "AI",
     featured: true,
   },
+
   {
     id: 15,
     title: "AI Agent Demo",
@@ -303,6 +318,15 @@ export function Projects() {
   }, [activeCategory]);
 
   const visible = showAll ? filtered : filtered.slice(0, 6);
+  const carouselProjects = visible.map((project) => ({
+    title: project.title,
+    description: project.description,
+    category: project.category,
+    image: project.image,
+    tags: project.technologies,
+    liveUrl: project.liveUrl,
+    codeUrl: project.githubUrl,
+  }));
 
   return (
     <section id="projects" className="section spatial-section">
@@ -350,7 +374,7 @@ export function Projects() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
-              className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              className="project-carousel-stage"
               initial={shouldReduce ? false : { opacity: 0, y: 12 }}
               animate={shouldReduce ? undefined : { opacity: 1, y: 0 }}
               exit={shouldReduce ? undefined : { opacity: 0, y: -8 }}
@@ -360,11 +384,7 @@ export function Projects() {
                   : { duration: 0.35, ease: [0.25, 1, 0.5, 1] as const }
               }
             >
-              {visible.map((project, index) => (
-                <FadeIn key={project.id} delay={index * 0.08} className="h-full">
-                  <ProjectCard project={project} shouldReduce={shouldReduce ?? false} />
-                </FadeIn>
-              ))}
+              <DNAProjectCarousel projects={carouselProjects} reducedMotion={shouldReduce ?? false} />
             </motion.div>
           </AnimatePresence>
         </FadeIn>

@@ -56,6 +56,32 @@ section { scroll-margin-top: 100px; }
 .spatial-card:hover { transform: translateY(-4px); box-shadow: var(--glow); background: var(--surface-2); }
 .media-cover { aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(0.86) grayscale(0.16); }
 .project-media { aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--border); filter: saturate(0.9); }
+.skill-logo { position: relative; display: inline-block; width: 24px; height: 24px; margin-right: var(--space-8); perspective: 120px; transform-style: preserve-3d; animation: skill-float 4s ease-in-out infinite; }
+.skill-logo-face, .skill-logo-side, .skill-logo-top { position: absolute; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, 0.22); background: linear-gradient(135deg, var(--blue), var(--surface-2)); color: var(--text); font-size: 8px; font-weight: 700; line-height: 1; }
+.skill-logo-face { inset: 2px; z-index: 2; border-radius: 5px; transform: translateZ(5px); }
+.skill-logo-side { top: 4px; right: 0; width: 5px; height: 16px; transform: rotateY(90deg) translateZ(2px); transform-origin: left; background: var(--surface-2); }
+.skill-logo-top { top: 0; left: 4px; width: 16px; height: 5px; transform: rotateX(90deg) translateZ(2px); transform-origin: bottom; background: var(--link); }
+@keyframes skill-float { 0%, 100% { transform: rotateY(-12deg) translateY(0); } 50% { transform: rotateY(18deg) translateY(-2px); } }
+
+.project-carousel-stage { min-height: 640px; }
+.dna-carousel { position: relative; height: 640px; touch-action: none; cursor: grab; }
+.dna-carousel:active { cursor: grabbing; }
+.dna-carousel canvas { position: absolute !important; inset: 0; }
+.dna-carousel-hint { position: absolute; right: var(--space-16); bottom: var(--space-16); border: 1px solid var(--border); border-radius: var(--radius-pill); background: rgba(18, 24, 41, 0.78); padding: var(--space-8) var(--space-12); color: var(--text-muted); font-size: 14px; pointer-events: none; }
+.dna-project-card { width: min(340px, 72vw); overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-sm); background: rgba(19, 23, 34, 0.96); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.34); color: var(--text); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); user-select: none; }
+.dna-project-card.is-focused { border-color: var(--blue); box-shadow: 0 0 34px rgba(20, 110, 245, 0.28); transform: translateY(-4px); }
+.dna-project-image-wrap { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); }
+.dna-project-image { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.92); }
+.dna-project-content { padding: var(--space-20); }
+.dna-project-category { display: inline-flex; border-radius: var(--radius-pill); background: rgba(212, 255, 0, 0.12); padding: var(--space-8) var(--space-12); color: var(--yellow); font-size: 14px; line-height: 19.6px; }
+.dna-project-content h3 { margin: var(--space-12) 0 0; font-size: 24px; line-height: 32px; }
+.dna-project-content p { display: -webkit-box; overflow: hidden; margin: var(--space-8) 0 0; color: var(--text-muted); font-size: 16px; line-height: 22.4px; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.dna-project-tags { display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-16); }
+.dna-project-tags span { border: 1px solid var(--border); border-radius: var(--radius-pill); padding: var(--space-8) var(--space-10); color: var(--text-muted); font-size: 14px; line-height: 19.6px; }
+.dna-project-links { display: flex; gap: var(--space-16); margin-top: var(--space-20); }
+.dna-project-links a { display: inline-flex; align-items: center; gap: var(--space-8); color: var(--link); font-size: 16px; font-weight: 500; }
+.dna-project-links a:hover, .dna-project-links a:focus-visible { color: var(--text); }
+.dna-project-links svg { width: 16px; height: 16px; }
 
 .portfolio-heading { color: var(--text); font-size: 40px; line-height: 44px; }
 .portfolio-display { color: var(--text); font-size: clamp(40px, 7vw, 72px); line-height: 1.05; }
@@ -89,4 +115,5 @@ section { scroll-margin-top: 100px; }
 .line-clamp-3 { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; }
 
 @media (min-width: 768px) { .section { padding: var(--space-80) 0; } .section-inner { padding: 0 var(--space-32); } }
+@media (max-width: 767px) { .project-carousel-stage, .dna-carousel { min-height: 560px; height: 560px; } .dna-project-card { width: min(300px, 76vw); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; } .tech-marquee-track { width: 100%; flex-wrap: wrap; animation: none; } .spatial-card:hover, .portfolio-button:hover { transform: none; } }

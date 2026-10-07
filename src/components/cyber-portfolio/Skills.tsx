@@ -15,6 +15,17 @@ const GROUPS: Array<{ label: string; skills: string[] }> = [
   { label: 'Product', skills: ['Scope', 'Roadmaps', 'Docs', 'Stakeholder comms'] },
 ]
 
+function SkillLogo({ name }: { name: string }) {
+  const letters = name.replace(/[^a-z0-9]/gi, '').slice(0, 2).toUpperCase()
+  return (
+    <span className="skill-logo" aria-hidden="true">
+      <span className="skill-logo-face">{letters}</span>
+      <span className="skill-logo-side" />
+      <span className="skill-logo-top" />
+    </span>
+  )
+}
+
 function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
   const ref = useRef<HTMLDivElement | null>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -36,7 +47,7 @@ function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
                 : { delay: index * 0.045, duration: 0.36, ease: [0.34, 1.56, 0.64, 1] }
             }
           >
-            {skill}
+            <SkillLogo name={skill} />{skill}
           </motion.span>
         ))}
       </div>
@@ -66,12 +77,12 @@ export function Skills() {
               <div className="tech-marquee-track py-2">
                 <div className="flex gap-3">
                   {allSkills.map((skill) => (
-                    <span key={skill} className="portfolio-badge portfolio-metric">{skill}</span>
+                    <span key={skill} className="portfolio-badge portfolio-metric"><SkillLogo name={skill} />{skill}</span>
                   ))}
                 </div>
                 <div className="flex gap-3" aria-hidden="true">
                   {allSkills.map((skill) => (
-                    <span key={`duplicate-${skill}`} className="portfolio-badge portfolio-metric">{skill}</span>
+                    <span key={`duplicate-${skill}`} className="portfolio-badge portfolio-metric"><SkillLogo name={skill} />{skill}</span>
                   ))}
                 </div>
               </div>
