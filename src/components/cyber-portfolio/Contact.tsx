@@ -172,7 +172,7 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="text-sm uppercase tracking-widest text-cloudy">Location</div>
-                    <div className="mt-1">Gujrat, Pakistan</div>
+                    <div className="mt-1">lahore, Pakistan</div>
                   </div>
                 </div>
               </motion.div>
