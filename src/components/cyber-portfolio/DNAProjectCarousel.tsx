@@ -26,7 +26,7 @@ export type DNAProject = {
 type CarouselProps = { projects: DNAProject[]; reducedMotion?: boolean }
 
 const RADIUS = 3.6
-const VERTICAL_STEP = 1.45
+const VERTICAL_STEP = 1.9
 const ANGLE_STEP = Math.PI / 3
 
 function HelixCard({ project, index, total, offset, spin, hovered, onHover }: {
@@ -53,10 +53,9 @@ function HelixCard({ project, index, total, offset, spin, hovered, onHover }: {
     >
       <Html
         transform
-        sprite
         center
         distanceFactor={7}
-        zIndexRange={[20, 0]}
+        zIndexRange={[1000, 0]}
         style={{ opacity, filter: `blur(${blur}px)`, transition: 'filter 180ms ease, opacity 180ms ease' }}
       >
         <article

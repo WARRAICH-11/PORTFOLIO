@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
+import { Brain, Code2, Database, Map, Server, Workflow } from 'lucide-react'
 import { FadeIn } from '../motion/FadeIn'
 import { ScrollMotionLayer } from '../motion/ScrollMotionLayer'
 import { SplitReveal } from '../SplitReveal'
@@ -15,11 +16,32 @@ const GROUPS: Array<{ label: string; skills: string[] }> = [
   { label: 'Product', skills: ['Scope', 'Roadmaps', 'Docs', 'Stakeholder comms'] },
 ]
 
+const SKILL_ICONS = {
+  AI: Brain,
+  backend: Server,
+  frontend: Code2,
+  data: Database,
+  devops: Workflow,
+  product: Map,
+} as const
+
 function SkillLogo({ name }: { name: string }) {
-  const letters = name.replace(/[^a-z0-9]/gi, '').slice(0, 2).toUpperCase()
+  const normalized = name.toLowerCase()
+  const Icon = normalized.includes('llm') || normalized.includes('rag') || normalized.includes('prompt') || normalized.includes('eval') || normalized.includes('embed') || normalized.includes('ai') ? SKILL_ICONS.AI
+    : normalized.includes('node') || normalized.includes('api') || normalized.includes('auth') || normalized.includes('queue') || normalized.includes('cache') ? SKILL_ICONS.backend
+      : normalized.includes('react') || normalized.includes('type') || normalized.includes('tailwind') || normalized.includes('ux') || normalized.includes('access') ? SKILL_ICONS.frontend
+        : normalized.includes('sql') || normalized.includes('etl') || normalized.includes('analytic') || normalized.includes('vector') || normalized.includes('pipeline') ? SKILL_ICONS.data
+          : normalized.includes('docker') || normalized.includes('ci') || normalized.includes('monitor') || normalized.includes('log') || normalized.includes('cloud') ? SKILL_ICONS.devops
+            : SKILL_ICONS.product
+  const tone = normalized.includes('llm') || normalized.includes('rag') || normalized.includes('prompt') || normalized.includes('eval') || normalized.includes('embed') || normalized.includes('ai') ? 'violet'
+    : normalized.includes('node') || normalized.includes('api') || normalized.includes('auth') || normalized.includes('queue') || normalized.includes('cache') ? 'orange'
+      : normalized.includes('react') || normalized.includes('type') || normalized.includes('tailwind') || normalized.includes('ux') || normalized.includes('access') ? 'cyan'
+        : normalized.includes('sql') || normalized.includes('etl') || normalized.includes('analytic') || normalized.includes('vector') || normalized.includes('pipeline') ? 'green'
+          : normalized.includes('docker') || normalized.includes('ci') || normalized.includes('monitor') || normalized.includes('log') || normalized.includes('cloud') ? 'blue'
+            : 'yellow'
   return (
-    <span className="skill-logo" aria-hidden="true">
-      <span className="skill-logo-face">{letters}</span>
+    <span className={`skill-logo skill-logo-${tone}`} aria-hidden="true">
+      <span className="skill-logo-face"><Icon size={14} strokeWidth={2.4} /></span>
       <span className="skill-logo-side" />
       <span className="skill-logo-top" />
     </span>
@@ -47,7 +69,7 @@ function SkillGroup({ label, skills }: { label: string; skills: string[] }) {
                 : { delay: index * 0.045, duration: 0.36, ease: [0.34, 1.56, 0.64, 1] }
             }
           >
-            <SkillLogo name={skill} />{skill}
+            {skill}
           </motion.span>
         ))}
       </div>

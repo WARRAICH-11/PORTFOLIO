@@ -12,6 +12,12 @@
   --blue: #146EF5;
   --yellow: #D4FF00;
   --link: #6EA8FF;
+  --logo-violet: #A78BFA;
+  --logo-orange: #FB923C;
+  --logo-cyan: #22D3EE;
+  --logo-green: #34D399;
+  --logo-blue: #60A5FA;
+  --logo-yellow: #FACC15;
   --glow: 0 0 30px rgba(20, 110, 245, 0.15);
   --space-8: 8px;
   --space-10: 10px;
@@ -57,10 +63,16 @@ section { scroll-margin-top: 100px; }
 .media-cover { aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(0.86) grayscale(0.16); }
 .project-media { aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 1px solid var(--border); filter: saturate(0.9); }
 .skill-logo { position: relative; display: inline-block; width: 24px; height: 24px; margin-right: var(--space-8); perspective: 120px; transform-style: preserve-3d; animation: skill-float 4s ease-in-out infinite; }
-.skill-logo-face, .skill-logo-side, .skill-logo-top { position: absolute; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, 0.22); background: linear-gradient(135deg, var(--blue), var(--surface-2)); color: var(--text); font-size: 8px; font-weight: 700; line-height: 1; }
+.skill-logo-face, .skill-logo-side, .skill-logo-top { position: absolute; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--logo-color) 70%, white); background: linear-gradient(135deg, color-mix(in srgb, var(--logo-color) 82%, white), color-mix(in srgb, var(--logo-color) 35%, var(--surface-2))); color: var(--bg); font-size: 8px; font-weight: 700; line-height: 1; }
+.skill-logo-violet { --logo-color: var(--logo-violet); }
+.skill-logo-orange { --logo-color: var(--logo-orange); }
+.skill-logo-cyan { --logo-color: var(--logo-cyan); }
+.skill-logo-green { --logo-color: var(--logo-green); }
+.skill-logo-blue { --logo-color: var(--logo-blue); }
+.skill-logo-yellow { --logo-color: var(--logo-yellow); }
 .skill-logo-face { inset: 2px; z-index: 2; border-radius: 5px; transform: translateZ(5px); }
 .skill-logo-side { top: 4px; right: 0; width: 5px; height: 16px; transform: rotateY(90deg) translateZ(2px); transform-origin: left; background: var(--surface-2); }
-.skill-logo-top { top: 0; left: 4px; width: 16px; height: 5px; transform: rotateX(90deg) translateZ(2px); transform-origin: bottom; background: var(--link); }
+.skill-logo-top { top: 0; left: 4px; width: 16px; height: 5px; transform: rotateX(90deg) translateZ(2px); transform-origin: bottom; background: var(--logo-color); }
 @keyframes skill-float { 0%, 100% { transform: rotateY(-12deg) translateY(0); } 50% { transform: rotateY(18deg) translateY(-2px); } }
 
 .project-carousel-stage { min-height: 640px; }

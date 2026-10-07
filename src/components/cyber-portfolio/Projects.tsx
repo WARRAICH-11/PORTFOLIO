@@ -20,7 +20,7 @@ const ALL_PROJECTS = [
     technologies: ["python", "flask", "sqlite", "Full-Stack", "AI/ML" ,"JSON" ],
     liveUrl: "https://warraich11.pythonanywhere.com/",
     githubUrl: "https://github.com/WARRAICH-11/ATM-Management-System",
-    category: "Python",
+    category: "AI",
     featured: true,
   },
 
